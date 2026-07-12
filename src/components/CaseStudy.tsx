@@ -57,11 +57,13 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/70 to-black/20" />
 
         <h1 className="cs-hero-title max-w-4xl overflow-hidden">
-          <span className="block text-[14vw] font-semibold leading-[0.95] tracking-tight sm:text-[7vw]">
+          <span className="block text-[14vw] font-normal leading-[1.02] tracking-[-0.06em] sm:text-[clamp(3rem,7.5vw,7rem)]">
             {data.title}
           </span>
         </h1>
-        <p className="mt-4 max-w-lg text-lg text-white/70">{data.subtitle}</p>
+        <p className="mt-4 max-w-lg text-lg font-medium tracking-[-0.02em] text-white/70">
+          {data.subtitle}
+        </p>
 
         <dl className="cs-hero-meta mt-12 grid grid-cols-2 gap-6 border-t border-white/15 pt-6 text-sm sm:grid-cols-4">
           <div>
