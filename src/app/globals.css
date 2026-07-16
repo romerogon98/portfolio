@@ -12,7 +12,109 @@
   --font-serif: var(--font-instrument-serif);
 }
 
+/* Brand red palette (#FF1E00 = accent-600) — static values generate accent color utilities */
+@theme {
+  --color-accent-50: #fff0ed;
+  --color-accent-100: #ffdfd8;
+  --color-accent-200: #ffc0b3;
+  --color-accent-300: #ff9580;
+  --color-accent-400: #ff6142;
+  --color-accent-500: #ff3d1c;
+  --color-accent-600: #ff1e00;
+  --color-accent-700: #d61400;
+  --color-accent-800: #ab1102;
+  --color-accent-900: #8a1408;
+  --color-accent-950: #4b0800;
+}
+
+/* shadcn-style tokens used by OriginButton. Registered so Tailwind emits the
+   utilities (bg-card, border-border, bg-muted, ring-ring…); each button also
+   overrides these vars inline, so these defaults only matter as a fallback. */
+@theme {
+  --color-border: #2b2a25;
+  --color-card: #111111;
+  --color-card-foreground: #f6f3ec;
+  --color-muted: #171716;
+  --color-muted-foreground: #9a958a;
+  --color-ring: rgba(246, 243, 236, 0.18);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Hero scroll-indicator bead */
+@keyframes scrollBead {
+  0% {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(44px);
+    opacity: 0;
+  }
+}
+.scroll-bead {
+  animation: scrollBead 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-bead {
+    animation: none;
+  }
+}
+
+/* Horizontal marquee (Stack) — two identical groups, shift by one group */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Hero kinetic type — same keyframe, per-line speed via --dur, rev = scroll right */
+.kinetic {
+  animation: marquee var(--dur, 30s) linear infinite;
+}
+.kinetic-rev {
+  animation: marquee var(--dur, 30s) linear infinite reverse;
+}
+@media (prefers-reduced-motion: reduce) {
+  .kinetic,
+  .kinetic-rev {
+    animation: none;
+  }
 }

@@ -1,4 +1,6 @@
-export const dicaba = {
+import type { CaseStudy } from "./types";
+
+export const dicaba: CaseStudy = {
   slug: "dicaba",
   title: "Dicaba",
   subtitle: "Real Estate Website Design & Development",
@@ -70,5 +72,3 @@ export const dicaba = {
   ],
   liveUrl: "https://desarrolladicaba.com/",
 };
-
-export type CaseStudy = typeof dicaba;

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import type { CaseStudy as CaseStudyData } from "@/content/work/dicaba";
+import type { CaseStudy as CaseStudyData } from "@/content/work/types";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,13 +47,23 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
   return (
     <div ref={scope} className="bg-black text-white">
       <section className="relative isolate flex min-h-screen flex-col justify-end overflow-hidden px-6 pb-14 pt-32 sm:px-10">
-        <Image
-          src={data.heroImage}
-          alt={data.title}
-          fill
-          priority
-          className="absolute inset-0 -z-10 object-cover"
-        />
+        {data.heroImage ? (
+          <Image
+            src={data.heroImage}
+            alt={data.title}
+            fill
+            priority
+            quality={90}
+            sizes="100vw"
+            className="absolute inset-0 -z-10 object-cover"
+          />
+        ) : (
+          <div
+            className={`absolute inset-0 -z-10 bg-gradient-to-br ${
+              data.tint ?? "from-accent-500 to-accent-950"
+            }`}
+          />
+        )}
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/70 to-black/20" />
 
         <h1 className="cs-hero-title max-w-4xl overflow-hidden">
@@ -89,9 +99,11 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
         <p className="cs-reveal text-2xl leading-relaxed text-white/90 sm:text-3xl">
           {data.intro}
         </p>
-        <p className="cs-reveal mt-8 text-lg leading-relaxed text-white/60">
-          {data.context}
-        </p>
+        {data.context && (
+          <p className="cs-reveal mt-8 text-lg leading-relaxed text-white/60">
+            {data.context}
+          </p>
+        )}
       </section>
 
       {data.sections.map((section) => (
@@ -132,6 +144,8 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
                 src={section.image}
                 alt={section.heading}
                 fill
+                quality={90}
+                sizes="(max-width: 768px) 100vw, 768px"
                 className="object-cover"
               />
             </div>
@@ -139,16 +153,18 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
         </section>
       ))}
 
-      <section className="border-t border-white/10 px-6 py-16 sm:px-10">
-        <a
-          href={data.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="cs-reveal inline-flex items-center gap-2 text-lg font-medium underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white"
-        >
-          Visit live site ↗
-        </a>
-      </section>
+      {data.liveUrl && (
+        <section className="border-t border-white/10 px-6 py-16 sm:px-10">
+          <a
+            href={data.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cs-reveal inline-flex items-center gap-2 text-lg font-medium underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white"
+          >
+            Visit live site ↗
+          </a>
+        </section>
+      )}
     </div>
   );
 }
