@@ -52,13 +52,13 @@ float fbm(vec2 p){
 // ramp — near-black -> maroon -> blood -> brand red (#FF1E00) -> red-orange.
 // No pink/peach at the top: Luke's brightest cores stay saturated red-orange.
 vec3 grade(float x){
-  vec3 c = vec3(0.035, 0.028, 0.032);                                // near-black
-  c = mix(c, vec3(0.090, 0.030, 0.035), smoothstep(0.00, 0.30, x));  // dark maroon
-  c = mix(c, vec3(0.300, 0.055, 0.045), smoothstep(0.30, 0.52, x));  // blood
-  c = mix(c, vec3(0.640, 0.090, 0.030), smoothstep(0.52, 0.68, x));  // deep red
-  c = mix(c, vec3(0.902, 0.118, 0.000), smoothstep(0.68, 0.82, x));  // red
-  c = mix(c, vec3(1.000, 0.290, 0.110), smoothstep(0.82, 0.92, x));  // #ff4a1c
-  c = mix(c, vec3(1.000, 0.470, 0.230), smoothstep(0.92, 1.00, x));  // orange peak
+  vec3 c = vec3(0.035, 0.030, 0.030);                                // near-black
+  c = mix(c, vec3(0.095, 0.045, 0.028), smoothstep(0.00, 0.30, x));  // dark umber
+  c = mix(c, vec3(0.320, 0.110, 0.035), smoothstep(0.30, 0.52, x));  // burnt orange
+  c = mix(c, vec3(0.680, 0.220, 0.020), smoothstep(0.52, 0.68, x));  // deep orange
+  c = mix(c, vec3(1.000, 0.302, 0.000), smoothstep(0.68, 0.82, x));  // #ff4d00
+  c = mix(c, vec3(1.000, 0.430, 0.120), smoothstep(0.82, 0.92, x));  // bright orange
+  c = mix(c, vec3(1.000, 0.580, 0.260), smoothstep(0.92, 1.00, x));  // orange peak
   return c;
 }
 
@@ -126,7 +126,7 @@ export default function GradientField({ className = "" }: { className?: string }
     });
     if (!gl) {
       canvas.style.background =
-        "radial-gradient(120% 120% at 55% 40%, #ff1e00 0%, #5e1410 32%, #0a0808 72%)";
+        "radial-gradient(120% 120% at 55% 40%, #ff4d00 0%, #5e2410 32%, #0a0808 72%)";
       return;
     }
 

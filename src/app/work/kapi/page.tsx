@@ -10,7 +10,7 @@ export const metadata = {
 export default function KapiPage() {
   return (
     <>
-      <Nav />
+      <Nav light={kapi.theme === "light"} />
       <CaseStudy data={kapi} />
     </>
   );

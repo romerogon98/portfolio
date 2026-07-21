@@ -23,8 +23,15 @@ const CATEGORIES: Category[] = [
       "Information Architecture",
     ],
   },
+  {
+    name: "AI & Hybrid Development",
+    items: ["Claude", "Claude Code", "Cursor", "OpenAI", "v0", "Sora"],
+  },
   { name: "No-Code Development", items: ["Framer", "Webflow", "WordPress (Elementor)"] },
-  { name: "Frontend", items: ["HTML", "CSS", "Responsive Design"] },
+  {
+    name: "Frontend & Deploy",
+    items: ["HTML", "CSS", "React", "Next.js", "Vue", "GitHub", "Vercel"],
+  },
   { name: "Motion & 3D", items: ["Motion Graphics", "After Effects", "3D basics"] },
 ];
 

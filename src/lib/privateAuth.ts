@@ -24,6 +24,9 @@ export function computeAuthToken(): string | null {
 }
 
 export function hasValidAuthCookie(cookieValue: string | undefined): boolean {
+  // Local convenience only: skip the gate while developing. NODE_ENV is
+  // "production" in any real deploy, so the password is still enforced there.
+  if (process.env.NODE_ENV === "development") return true;
   if (!cookieValue) return false;
   const expected = computeAuthToken();
   if (!expected) return false;

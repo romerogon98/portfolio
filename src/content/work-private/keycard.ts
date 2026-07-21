@@ -13,6 +13,7 @@ export const keycard: CaseStudy = {
   role: "UX/UI Designer · Brand Design · Web Development",
   duration: "Ongoing partnership",
   tint: "from-slate-700 to-slate-950",
+  liveUrl: "https://keycard.tech/",
   intro:
     "Keycard builds identity infrastructure for the agent-native world — tools that let developers give AI agents secure, dynamic access to other tools without giving up enterprise-grade security. What started as a request for a marketing site turned into an ongoing brand and web partnership at Litebox, where I worked on the visual system, the site, and the go-to-market push around their launch event.",
   context:

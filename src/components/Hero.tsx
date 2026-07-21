@@ -3,7 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import GradientField from "@/components/GradientField";
+
+const SOCIALS = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/romero-gonzalo" },
+  { label: "Gmail", href: "mailto:romerogon98@gmail.com" },
+  { label: "Instagram", href: "https://www.instagram.com/gonromero.jpg/" },
+];
 
 // Kinetic-type hero (Russell Numo style): three oversized word-marquees scrolling
 // in alternating directions, with the B&W portrait centered on top. Dark, with a
@@ -98,9 +103,6 @@ export default function Hero() {
       ref={scope}
       className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-black text-white"
     >
-      <GradientField className="opacity-45" />
-      <div className="pointer-events-none absolute inset-0 bg-black/60" />
-
       <h1 className="sr-only">
         Gonzalo Romero — No-code developer, UX/UI designer, creative.
       </h1>
@@ -132,9 +134,18 @@ export default function Hero() {
           Based in Germany ·{" "}
           <span className="tabular-nums text-white/90">{time}</span>
         </span>
-        <span className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
-          Open to work
+        <span className="flex items-center gap-4">
+          {SOCIALS.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              target={s.href.startsWith("http") ? "_blank" : undefined}
+              rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="transition-colors hover:text-white"
+            >
+              {s.label}
+            </a>
+          ))}
         </span>
       </div>
     </section>

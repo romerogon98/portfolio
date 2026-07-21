@@ -56,7 +56,7 @@ export default function HistoryReveal() {
             <span
               key={i}
               className={`sp-word inline-block ${
-                accent ? "font-serif italic text-accent-600" : ""
+                accent ? "text-accent-600" : ""
               }`}
             >
               {word}

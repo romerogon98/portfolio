@@ -10,7 +10,7 @@ export const metadata = {
 export default function FacturantePage() {
   return (
     <>
-      <Nav />
+      <Nav light={facturante.theme === "light"} />
       <CaseStudy data={facturante} />
     </>
   );

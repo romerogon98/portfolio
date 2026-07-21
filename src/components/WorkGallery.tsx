@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import TransitionLink from "@/components/TransitionLink";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { dicaba } from "@/content/work/dicaba";
@@ -75,7 +75,7 @@ export default function WorkGallery() {
             <h2 className="mt-3 text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[0.95] tracking-[-0.04em] text-white">
               Selected
               <br />
-              <em className="font-serif italic text-accent-600">work</em>
+              <em className="not-italic text-accent-600">work</em>
             </h2>
             <p className="mt-4 max-w-[16rem] text-sm text-white/50">
               Scroll to explore — click any project to open the case study.
@@ -83,7 +83,7 @@ export default function WorkGallery() {
           </div>
 
           {CASES.map((c, i) => (
-            <Link
+            <TransitionLink
               key={c.slug}
               href={`/work/${c.slug}`}
               className="group relative aspect-square w-[clamp(18rem,34vw,28rem)] shrink-0 overflow-hidden rounded-2xl border border-white/10"
@@ -105,15 +105,38 @@ export default function WorkGallery() {
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6">
-                <h3 className="font-serif text-3xl italic text-white">
+                <h3 className="text-3xl font-medium tracking-[-0.02em] text-white">
                   {c.title}
                 </h3>
                 <p className="mt-1 text-sm font-medium tracking-[-0.01em] text-white/60">
                   {c.subtitle}
                 </p>
               </div>
-            </Link>
+            </TransitionLink>
           ))}
+
+          {/* Locked private-work card — blurred preview + CTA into the NDA index. */}
+          <TransitionLink
+            href="/work/private"
+            className="group relative flex aspect-square w-[clamp(18rem,34vw,28rem)] shrink-0 flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10"
+            style={{ marginTop: "2vh" }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-accent-700 via-accent-950 to-black" />
+            <div className="absolute inset-0 opacity-50 blur-2xl [background-image:radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_42%),radial-gradient(circle_at_72%_65%,rgba(255,120,80,0.35),transparent_48%)]" />
+            <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
+
+            <div className="relative z-10 flex flex-col items-center gap-5 px-6 text-center">
+              <span className="text-xs uppercase tracking-widest text-white/60">
+                Under NDA
+              </span>
+              <h3 className="text-3xl font-medium tracking-[-0.02em] text-white">
+                Private work
+              </h3>
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors group-hover:bg-white group-hover:text-black">
+                Explore private work →
+              </span>
+            </div>
+          </TransitionLink>
         </div>
       </div>
     </section>

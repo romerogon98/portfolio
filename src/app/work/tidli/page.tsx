@@ -10,7 +10,7 @@ export const metadata = {
 export default function TidliPage() {
   return (
     <>
-      <Nav />
+      <Nav light={tidli.theme === "light"} />
       <CaseStudy data={tidli} />
     </>
   );

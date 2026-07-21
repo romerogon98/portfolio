@@ -10,7 +10,7 @@ export const metadata = {
 export default function DicabaPage() {
   return (
     <>
-      <Nav />
+      <Nav light={dicaba.theme === "light"} />
       <CaseStudy data={dicaba} />
     </>
   );

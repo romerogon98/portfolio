@@ -10,7 +10,7 @@ export const metadata = {
 export default function EntuitivePage() {
   return (
     <>
-      <Nav />
+      <Nav light={entuitive.theme === "light"} />
       <CaseStudy data={entuitive} />
     </>
   );

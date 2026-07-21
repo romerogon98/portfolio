@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local drop-box for source docs (not deployed)
+_input/
+
+# Raw audio sources — too large and rights-encumbered to ship.
+# Only an optimized, owned loop (public/audio/ambient.mp3) should be committed.
+public/audio/*.wav
+public/audio/*.aiff

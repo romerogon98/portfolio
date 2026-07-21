@@ -1,4 +1,4 @@
-import Link from "next/link";
+import TransitionLink from "@/components/TransitionLink";
 import Nav from "@/components/Nav";
 import { PRIVATE_PROJECTS } from "@/content/work-private";
 
@@ -17,7 +17,7 @@ export default function PrivateWorkIndex() {
         </span>
         <h1 className="mt-4 max-w-2xl text-[clamp(2rem,5vw,3.5rem)] font-normal tracking-[-0.04em]">
           Confidential client work at{" "}
-          <em className="font-serif italic text-accent-500">Litebox</em>.
+          <em className="not-italic text-accent-500">Litebox</em>.
         </h1>
         <p className="mt-4 max-w-lg text-white/50">
           Under NDA — shared directly, never listed publicly.
@@ -28,7 +28,7 @@ export default function PrivateWorkIndex() {
             const live = p.status === "documented";
             const row = (
               <div className="flex items-center justify-between py-6">
-                <span className="font-serif text-2xl italic sm:text-3xl">
+                <span className="text-2xl font-medium sm:text-3xl">
                   {p.title}
                 </span>
                 <span className="text-xs uppercase tracking-widest text-white/40">
@@ -40,12 +40,12 @@ export default function PrivateWorkIndex() {
             return (
               <li key={p.slug}>
                 {live ? (
-                  <Link
+                  <TransitionLink
                     href={`/work/private/${p.slug}`}
                     className="block transition-opacity hover:opacity-70"
                   >
                     {row}
-                  </Link>
+                  </TransitionLink>
                 ) : (
                   <div className="opacity-40">{row}</div>
                 )}

@@ -3,9 +3,29 @@ import Nav from "@/components/Nav";
 import CaseStudy from "@/components/CaseStudy";
 import { PRIVATE_PROJECTS } from "@/content/work-private";
 import { keycard } from "@/content/work-private/keycard";
+import { arcade } from "@/content/work-private/arcade";
+import { superwall } from "@/content/work-private/superwall";
+import { vu } from "@/content/work-private/vu";
+import { causely } from "@/content/work-private/causely";
+import { coderabbit } from "@/content/work-private/coderabbit";
+import { dystil } from "@/content/work-private/dystil";
+import { emergence } from "@/content/work-private/emergence";
+import { resolve } from "@/content/work-private/resolve";
+import { workada } from "@/content/work-private/workada";
 
 // Add an entry here as each project gets a real, documented case study.
-const DOCUMENTED: Record<string, typeof keycard> = { keycard };
+const DOCUMENTED: Record<string, typeof keycard> = {
+  keycard,
+  arcade,
+  superwall,
+  vu,
+  causely,
+  coderabbit,
+  dystil,
+  emergence,
+  resolve,
+  workada,
+};
 
 export async function generateMetadata({
   params,
@@ -33,7 +53,7 @@ export default async function PrivateCaseStudyPage({
 
   return (
     <>
-      <Nav />
+      <Nav light={data?.theme === "light"} />
       {data ? (
         <CaseStudy data={data} />
       ) : (

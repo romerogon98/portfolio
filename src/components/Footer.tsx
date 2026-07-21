@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import GradientField from "@/components/GradientField";
-import { OriginButton } from "@/components/ui/OriginButton";
+import TransitionLink from "@/components/TransitionLink";
 
 const EMAIL = "romerogon98@gmail.com";
 
@@ -10,6 +10,8 @@ const SOCIALS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/romero-gonzalo" },
   { label: "Behance", href: "https://www.behance.net/romerogonzalo" },
   { label: "Instagram", href: "https://www.instagram.com/gonromero.jpg/" },
+  { label: "SoundCloud", href: "https://soundcloud.com/romerogon" },
+  { label: "Sabotage", href: "https://www.instagram.com/sabotage.ba/" },
   { label: "Vimeo", href: "https://vimeo.com/romerogon98" },
 ];
 
@@ -17,6 +19,8 @@ const MENU = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Private work", href: "/work/private" },
+  { label: "CV", href: "/cv" },
 ];
 
 function useBerlinTime() {
@@ -61,24 +65,6 @@ export default function Footer() {
             {EMAIL}
             <span className="block h-px w-full origin-left scale-x-0 bg-accent-600 transition-transform duration-500 ease-out group-hover:scale-x-100" />
           </a>
-          <div className="mt-8">
-            <OriginButton
-              onClick={() => {
-                window.location.href = `mailto:${EMAIL}`;
-              }}
-            >
-              Say hello
-              <svg width="30" height="12" viewBox="0 0 40 16" fill="none" aria-hidden>
-                <path
-                  d="M32 1l7 7-7 7M0 8h39"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </OriginButton>
-          </div>
         </div>
 
         <div className="flex gap-12 sm:gap-16">
@@ -102,15 +88,20 @@ export default function Footer() {
             <span className="mb-1 text-xs uppercase tracking-widest text-white/30">
               Menu
             </span>
-            {MENU.map((m) => (
-              <a
-                key={m.label}
-                href={m.href}
-                className="text-base font-medium uppercase tracking-widest text-white/60 transition-colors hover:text-white"
-              >
-                {m.label}
-              </a>
-            ))}
+            {MENU.map((m) => {
+              const cls =
+                "text-base font-medium uppercase tracking-widest text-white/60 transition-colors hover:text-white";
+              // Page routes get the curtain transition; in-page anchors stay plain.
+              return m.href.startsWith("/") ? (
+                <TransitionLink key={m.label} href={m.href} className={cls}>
+                  {m.label}
+                </TransitionLink>
+              ) : (
+                <a key={m.label} href={m.href} className={cls}>
+                  {m.label}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

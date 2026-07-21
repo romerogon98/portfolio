@@ -10,14 +10,14 @@ export type PrivateProjectEntry = {
 // study under src/content/work-private/<slug>.ts; the rest are placeholders
 // until content + assets are ready.
 export const PRIVATE_PROJECTS: PrivateProjectEntry[] = [
-  { slug: "vu", title: "VU", status: "soon" },
-  { slug: "coderabbit", title: "Coderabbit", status: "soon" },
-  { slug: "causely", title: "Causely", status: "soon" },
-  { slug: "workada", title: "Workada", status: "soon" },
-  { slug: "emergence", title: "Emergence", status: "soon" },
-  { slug: "dystil", title: "Dystil", status: "soon" },
-  { slug: "resolve", title: "Resolve", status: "soon" },
-  { slug: "superwall", title: "Superwall", status: "soon" },
-  { slug: "arcade", title: "Arcade", status: "soon" },
+  { slug: "vu", title: "VU", status: "documented" },
+  { slug: "coderabbit", title: "CodeRabbit", status: "documented" },
+  { slug: "causely", title: "Causely", status: "documented" },
+  { slug: "workada", title: "Workada", status: "documented" },
+  { slug: "emergence", title: "Emergence", status: "documented" },
+  { slug: "dystil", title: "Distyl", status: "documented" },
+  { slug: "resolve", title: "Resolve", status: "documented" },
+  { slug: "superwall", title: "Superwall", status: "documented" },
+  { slug: "arcade", title: "Arcade", status: "documented" },
   { slug: "keycard", title: "Keycard", status: "documented" },
 ];
