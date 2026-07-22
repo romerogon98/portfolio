@@ -3,11 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { OriginButton } from "@/components/ui/OriginButton";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const EMAIL = "romerogon98@gmail.com";
 
 type Category = { name: string; items: string[] };
 
@@ -23,8 +20,15 @@ const CATEGORIES: Category[] = [
       "Information Architecture",
     ],
   },
+  {
+    name: "AI & Hybrid Development",
+    items: ["Claude", "Claude Code", "Cursor", "OpenAI", "v0", "Sora"],
+  },
   { name: "No-Code Development", items: ["Framer", "Webflow", "WordPress (Elementor)"] },
-  { name: "Frontend", items: ["HTML", "CSS", "Responsive Design"] },
+  {
+    name: "Frontend & Deploy",
+    items: ["HTML", "CSS", "React", "Next.js", "Vue", "GitHub", "Vercel"],
+  },
   { name: "Motion & 3D", items: ["Motion Graphics", "After Effects", "3D basics"] },
 ];
 
@@ -50,13 +54,6 @@ export default function Skills() {
         ease: "power3.out",
         scrollTrigger: { trigger: scope.current, start: "top 70%" },
       });
-      gsap.to(".skills-arrow", {
-        x: 14,
-        duration: 1,
-        ease: "power1.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
     }, scope);
 
     return () => ctx.revert();
@@ -71,8 +68,8 @@ export default function Skills() {
       <div className="grid gap-16 md:grid-cols-2 md:gap-12">
         {/* Left — statement */}
         <div className="skills-intro flex flex-col">
-          <span className="text-sm uppercase tracking-widest text-white/40">
-            Skills
+          <span className="font-mono text-xs uppercase tracking-widest text-white/40">
+            (Skills)
           </span>
           <h2 className="mt-6 max-w-md text-[clamp(1.75rem,3.2vw,2.75rem)] font-semibold uppercase leading-[1.1] tracking-[-0.02em]">
             Multimedia designer with 5+ years of experience, focused on{" "}
@@ -80,30 +77,6 @@ export default function Skills() {
             <span className="text-accent-400">no-code</span> development.
           </h2>
 
-          <OriginButton
-            onClick={() => {
-              window.location.href = `mailto:${EMAIL}`;
-            }}
-            className="mt-10 self-start"
-          >
-            Contact me
-            <svg
-              className="skills-arrow"
-              width="34"
-              height="14"
-              viewBox="0 0 40 16"
-              fill="none"
-              aria-hidden
-            >
-              <path
-                d="M32 1l7 7-7 7M0 8h39"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </OriginButton>
         </div>
 
         {/* Right — accordion */}

@@ -18,8 +18,12 @@ export type CaseStudy = {
   heroImage?: string;
   /** Tailwind gradient classes for the placeholder hero when `heroImage` is missing. */
   tint?: string;
+  /** Page treatment. "light" reads better under bright imagery. Defaults to dark. */
+  theme?: "dark" | "light";
   intro: string;
   context?: string;
   sections: CaseSection[];
+  /** Extra shots rendered as a grid after the sections. */
+  gallery?: string[];
   liveUrl?: string;
 };

@@ -15,12 +15,12 @@ export default async function EnterPage({
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-black px-6 text-center text-white">
-      <span className="text-sm uppercase tracking-widest text-white/40">
+      <span className="font-mono text-xs uppercase tracking-widest text-white/40">
         (Private work)
       </span>
       <h1 className="mt-4 max-w-md text-[clamp(1.75rem,4vw,2.5rem)] font-normal tracking-[-0.03em]">
         This work is under{" "}
-        <em className="font-serif italic text-accent-500">NDA</em>.
+        <em className="not-italic text-accent-500">NDA</em>.
       </h1>
       <p className="mt-3 max-w-sm text-sm text-white/50">
         Enter the password to view these confidential case studies.

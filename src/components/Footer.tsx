@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import GradientField from "@/components/GradientField";
-import { OriginButton } from "@/components/ui/OriginButton";
+import TransitionLink from "@/components/TransitionLink";
 
 const EMAIL = "romerogon98@gmail.com";
 
@@ -10,6 +10,8 @@ const SOCIALS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/romero-gonzalo" },
   { label: "Behance", href: "https://www.behance.net/romerogonzalo" },
   { label: "Instagram", href: "https://www.instagram.com/gonromero.jpg/" },
+  { label: "SoundCloud", href: "https://soundcloud.com/romerogon" },
+  { label: "Sabotage", href: "https://www.instagram.com/sabotage.ba/" },
   { label: "Vimeo", href: "https://vimeo.com/romerogon98" },
 ];
 
@@ -17,6 +19,8 @@ const MENU = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Private work", href: "/work/private" },
+  { label: "CV", href: "/cv" },
 ];
 
 function useBerlinTime() {
@@ -51,7 +55,7 @@ export default function Footer() {
       {/* Top — contact + columns */}
       <div className="relative z-10 flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
         <div className="max-w-xl">
-          <span className="text-sm uppercase tracking-widest text-white/40">
+          <span className="font-mono text-xs uppercase tracking-widest text-white/40">
             (Get in touch)
           </span>
           <a
@@ -61,30 +65,12 @@ export default function Footer() {
             {EMAIL}
             <span className="block h-px w-full origin-left scale-x-0 bg-accent-600 transition-transform duration-500 ease-out group-hover:scale-x-100" />
           </a>
-          <div className="mt-8">
-            <OriginButton
-              onClick={() => {
-                window.location.href = `mailto:${EMAIL}`;
-              }}
-            >
-              Say hello
-              <svg width="30" height="12" viewBox="0 0 40 16" fill="none" aria-hidden>
-                <path
-                  d="M32 1l7 7-7 7M0 8h39"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </OriginButton>
-          </div>
         </div>
 
         <div className="flex gap-12 sm:gap-16">
           <div className="flex flex-col gap-3">
-            <span className="mb-1 text-xs uppercase tracking-widest text-white/30">
-              Social
+            <span className="mb-1 font-mono text-xs uppercase tracking-widest text-white/30">
+              (Social)
             </span>
             {SOCIALS.map((s) => (
               <a
@@ -99,18 +85,23 @@ export default function Footer() {
             ))}
           </div>
           <div className="flex flex-col gap-3">
-            <span className="mb-1 text-xs uppercase tracking-widest text-white/30">
-              Menu
+            <span className="mb-1 font-mono text-xs uppercase tracking-widest text-white/30">
+              (Menu)
             </span>
-            {MENU.map((m) => (
-              <a
-                key={m.label}
-                href={m.href}
-                className="text-base font-medium uppercase tracking-widest text-white/60 transition-colors hover:text-white"
-              >
-                {m.label}
-              </a>
-            ))}
+            {MENU.map((m) => {
+              const cls =
+                "text-base font-medium uppercase tracking-widest text-white/60 transition-colors hover:text-white";
+              // Page routes get the curtain transition; in-page anchors stay plain.
+              return m.href.startsWith("/") ? (
+                <TransitionLink key={m.label} href={m.href} className={cls}>
+                  {m.label}
+                </TransitionLink>
+              ) : (
+                <a key={m.label} href={m.href} className={cls}>
+                  {m.label}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -120,7 +111,7 @@ export default function Footer() {
         <h2 className="font-normal leading-[0.85] tracking-[-0.04em] text-[clamp(2.75rem,15vw,13rem)]">
           Gonzalo Romero<span className="text-accent-600">.</span>
         </h2>
-        <div className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-5 text-sm text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-5 font-mono text-xs uppercase tracking-widest text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <span>Based in Germany · Available worldwide</span>
           <span className="tabular-nums">{time && `Berlin — ${time}`}</span>
           <span>© {new Date().getFullYear()} Gonzalo Romero</span>

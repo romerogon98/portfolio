@@ -9,22 +9,36 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-instrument-sans);
-  --font-serif: var(--font-instrument-serif);
+  /* Serif dropped site-wide — any residual font-serif falls back to the sans. */
+  --font-serif: var(--font-instrument-sans);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-/* Brand red palette (#FF1E00 = accent-600) — static values generate accent color utilities */
+/* Brand-orange text selection everywhere. */
+::selection {
+  background: #ff4d00;
+  color: #0a0a0a;
+}
+::-moz-selection {
+  background: #ff4d00;
+  color: #0a0a0a;
+}
+
+/* Brand orange (#FF4D00, the Devicons orange). Only the one solid tone is used
+   as an accent — 400/500/600 all resolve to it so no mid-orange ever appears;
+   the darker steps stay only for the frosted-card / glow gradients. */
 @theme {
-  --color-accent-50: #fff0ed;
-  --color-accent-100: #ffdfd8;
-  --color-accent-200: #ffc0b3;
-  --color-accent-300: #ff9580;
-  --color-accent-400: #ff6142;
-  --color-accent-500: #ff3d1c;
-  --color-accent-600: #ff1e00;
-  --color-accent-700: #d61400;
-  --color-accent-800: #ab1102;
-  --color-accent-900: #8a1408;
-  --color-accent-950: #4b0800;
+  --color-accent-50: #fff3ec;
+  --color-accent-100: #ffe2d1;
+  --color-accent-200: #ffc2a1;
+  --color-accent-300: #ff9c6b;
+  --color-accent-400: #ff4d00;
+  --color-accent-500: #ff4d00;
+  --color-accent-600: #ff4d00;
+  --color-accent-700: #b83700;
+  --color-accent-800: #8f2b00;
+  --color-accent-900: #742300;
+  --color-accent-950: #3f1200;
 }
 
 /* shadcn-style tokens used by OriginButton. Registered so Tailwind emits the
@@ -42,6 +56,34 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Global white cursor — hide the native arrow/pointer everywhere once JS
+   confirms a fine pointer. Touch devices never get this class. */
+.site-cursor-active,
+.site-cursor-active * {
+  cursor: none !important;
+}
+
+/* CV print / save-as-PDF: flip the résumé to a clean light layout and drop
+   chrome (nav, cursor, the download button). Keeps accent text red. */
+@media print {
+  .cv-no-print {
+    display: none !important;
+  }
+  .cv-page {
+    background: #ffffff !important;
+    padding-top: 1.5rem !important;
+    color: #111111 !important;
+  }
+  .cv-page * {
+    color: #111111 !important;
+    border-color: #e5e5e5 !important;
+    background: transparent !important;
+  }
+  .cv-page .cv-accent {
+    color: #ff4d00 !important;
+  }
 }
 
 /* Lenis smooth scroll */

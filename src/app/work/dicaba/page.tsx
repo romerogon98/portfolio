@@ -1,4 +1,5 @@
 import CaseStudy from "@/components/CaseStudy";
+import { nextPublicCase } from "@/content/work/registry";
 import Nav from "@/components/Nav";
 import { dicaba } from "@/content/work/dicaba";
 
@@ -10,8 +11,8 @@ export const metadata = {
 export default function DicabaPage() {
   return (
     <>
-      <Nav />
-      <CaseStudy data={dicaba} />
+      <Nav light={dicaba.theme === "light"} />
+      <CaseStudy data={dicaba} next={nextPublicCase("dicaba")} />
     </>
   );
 }
