@@ -12,7 +12,7 @@ export default function PrivateWorkIndex() {
     <>
       <Nav />
       <main className="min-h-screen bg-black px-6 py-32 text-white sm:px-10">
-        <span className="text-sm uppercase tracking-widest text-white/40">
+        <span className="font-mono text-xs uppercase tracking-widest text-white/40">
           (Private work)
         </span>
         <h1 className="mt-4 max-w-2xl text-[clamp(2rem,5vw,3.5rem)] font-normal tracking-[-0.04em]">
@@ -31,7 +31,7 @@ export default function PrivateWorkIndex() {
                 <span className="text-2xl font-medium sm:text-3xl">
                   {p.title}
                 </span>
-                <span className="text-xs uppercase tracking-widest text-white/40">
+                <span className="font-mono text-xs uppercase tracking-widest text-white/40">
                   {live ? "View case study →" : "Coming soon"}
                 </span>
               </div>

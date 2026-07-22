@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { getLenis } from "@/components/SmoothScroll";
 import TransitionLink from "@/components/TransitionLink";
 import SoundToggle from "@/components/SoundToggle";
@@ -13,6 +14,7 @@ const LINKS = [
 ];
 
 export default function Nav({ light = false }: { light?: boolean }) {
+  const header = useRef<HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   // Dark text over light pages (e.g. the white CV). Open menu is always a dark
@@ -24,6 +26,25 @@ export default function Nav({ light = false }: { light?: boolean }) {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Staggered entrance on mount. fromTo with explicit values (rather than
+  // .from) so React's dev double-invoke can't capture the mid-animation state
+  // as the target and leave items stuck. Only y is per-item — the fade is on
+  // the whole bar, so each link keeps its own resting opacity.
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap
+        .timeline({ delay: 0.12 })
+        .fromTo(header.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 })
+        .fromTo(
+          ".nav-item",
+          { y: -10 },
+          { y: 0, duration: 0.55, stagger: 0.08, ease: "power3.out" },
+          0.08
+        );
+    }, header);
+    return () => ctx.revert();
   }, []);
 
   // Freeze the page (native scroll + Lenis) behind the full-screen mobile menu.
@@ -45,6 +66,7 @@ export default function Nav({ light = false }: { light?: boolean }) {
   return (
     <>
       <header
+        ref={header}
         className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 transition-colors duration-300 print:hidden sm:px-10 ${
           darkText ? "text-neutral-900" : "text-white"
         } ${
@@ -57,7 +79,11 @@ export default function Nav({ light = false }: { light?: boolean }) {
               : ""
         }`}
       >
-        <TransitionLink href="/" aria-label="Gonzalo Romero — home">
+        <TransitionLink
+          href="/"
+          aria-label="Gonzalo Romero — home"
+          className="nav-item"
+        >
           <Wordmark className="h-6 w-auto sm:h-7" />
         </TransitionLink>
 
@@ -66,13 +92,13 @@ export default function Nav({ light = false }: { light?: boolean }) {
             <a
               key={link.href}
               href={link.href}
-              className="opacity-80 transition-opacity hover:opacity-100"
+              className="nav-item opacity-80 transition-opacity hover:opacity-100"
             >
               {link.label}
             </a>
           ))}
           <SoundToggle />
-          <span className="opacity-50">EN</span>
+          <span className="nav-item opacity-50">EN</span>
         </nav>
 
         <button
@@ -80,7 +106,7 @@ export default function Nav({ light = false }: { light?: boolean }) {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="relative z-10 -mr-2 flex h-10 w-10 items-center justify-center sm:hidden"
+          className="nav-item relative z-10 -mr-2 flex h-10 w-10 items-center justify-center sm:hidden"
         >
           <span className="relative block h-4 w-5">
             <span

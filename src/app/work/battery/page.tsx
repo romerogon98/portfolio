@@ -1,4 +1,5 @@
 import CaseStudy from "@/components/CaseStudy";
+import { nextPublicCase } from "@/content/work/registry";
 import Nav from "@/components/Nav";
 import { battery } from "@/content/work/battery";
 
@@ -11,7 +12,7 @@ export default function BatteryPage() {
   return (
     <>
       <Nav light={battery.theme === "light"} />
-      <CaseStudy data={battery} />
+      <CaseStudy data={battery} next={nextPublicCase("battery")} />
     </>
   );
 }

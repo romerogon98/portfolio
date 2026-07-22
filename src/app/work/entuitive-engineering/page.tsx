@@ -1,4 +1,5 @@
 import CaseStudy from "@/components/CaseStudy";
+import { nextPublicCase } from "@/content/work/registry";
 import Nav from "@/components/Nav";
 import { entuitive } from "@/content/work/entuitive";
 
@@ -11,7 +12,7 @@ export default function EntuitivePage() {
   return (
     <>
       <Nav light={entuitive.theme === "light"} />
-      <CaseStudy data={entuitive} />
+      <CaseStudy data={entuitive} next={nextPublicCase("entuitive")} />
     </>
   );
 }

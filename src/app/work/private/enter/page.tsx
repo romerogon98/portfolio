@@ -15,7 +15,7 @@ export default async function EnterPage({
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-black px-6 text-center text-white">
-      <span className="text-sm uppercase tracking-widest text-white/40">
+      <span className="font-mono text-xs uppercase tracking-widest text-white/40">
         (Private work)
       </span>
       <h1 className="mt-4 max-w-md text-[clamp(1.75rem,4vw,2.5rem)] font-normal tracking-[-0.03em]">

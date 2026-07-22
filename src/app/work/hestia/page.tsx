@@ -1,4 +1,5 @@
 import CaseStudy from "@/components/CaseStudy";
+import { nextPublicCase } from "@/content/work/registry";
 import Nav from "@/components/Nav";
 import { hestia } from "@/content/work/hestia";
 
@@ -11,7 +12,7 @@ export default function HestiaPage() {
   return (
     <>
       <Nav light={hestia.theme === "light"} />
-      <CaseStudy data={hestia} />
+      <CaseStudy data={hestia} next={nextPublicCase("hestia")} />
     </>
   );
 }

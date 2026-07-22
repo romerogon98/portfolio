@@ -78,8 +78,8 @@ export default function Skills() {
       <div className="grid gap-16 md:grid-cols-2 md:gap-12">
         {/* Left — statement */}
         <div className="skills-intro flex flex-col">
-          <span className="text-sm uppercase tracking-widest text-white/40">
-            Skills
+          <span className="font-mono text-xs uppercase tracking-widest text-white/40">
+            (Skills)
           </span>
           <h2 className="mt-6 max-w-md text-[clamp(1.75rem,3.2vw,2.75rem)] font-semibold uppercase leading-[1.1] tracking-[-0.02em]">
             Multimedia designer with 5+ years of experience, focused on{" "}

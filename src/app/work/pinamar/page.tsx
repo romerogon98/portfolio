@@ -1,4 +1,5 @@
 import CaseStudy from "@/components/CaseStudy";
+import { nextPublicCase } from "@/content/work/registry";
 import Nav from "@/components/Nav";
 import { pinamar } from "@/content/work/pinamar";
 
@@ -11,7 +12,7 @@ export default function PinamarPage() {
   return (
     <>
       <Nav light={pinamar.theme === "light"} />
-      <CaseStudy data={pinamar} />
+      <CaseStudy data={pinamar} next={nextPublicCase("pinamar")} />
     </>
   );
 }

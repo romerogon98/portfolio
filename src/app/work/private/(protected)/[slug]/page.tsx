@@ -51,14 +51,30 @@ export default async function PrivateCaseStudyPage({
 
   const data = DOCUMENTED[slug];
 
+  // Next documented private case, wrapping around.
+  const documented = PRIVATE_PROJECTS.filter((p) => p.status === "documented");
+  const idx = documented.findIndex((p) => p.slug === slug);
+  const nextEntry = idx >= 0 ? documented[(idx + 1) % documented.length] : null;
+  const nextData = nextEntry ? DOCUMENTED[nextEntry.slug] : null;
+  const next =
+    nextData && nextEntry
+      ? {
+          href: `/work/private/${nextEntry.slug}`,
+          title: nextData.title,
+          subtitle: nextData.subtitle,
+          heroImage: nextData.heroImage,
+          tint: nextData.tint,
+        }
+      : null;
+
   return (
     <>
       <Nav light={data?.theme === "light"} />
       {data ? (
-        <CaseStudy data={data} />
+        <CaseStudy data={data} next={next} />
       ) : (
         <div className="flex min-h-screen flex-col items-center justify-center bg-black px-6 text-center text-white">
-          <span className="text-sm uppercase tracking-widest text-white/40">
+          <span className="font-mono text-xs uppercase tracking-widest text-white/40">
             (Private work)
           </span>
           <h1 className="mt-4 text-[clamp(2rem,5vw,3rem)] font-normal tracking-[-0.03em]">

@@ -1,4 +1,5 @@
 import CaseStudy from "@/components/CaseStudy";
+import { nextPublicCase } from "@/content/work/registry";
 import Nav from "@/components/Nav";
 import { tidli } from "@/content/work/tidli";
 
@@ -11,7 +12,7 @@ export default function TidliPage() {
   return (
     <>
       <Nav light={tidli.theme === "light"} />
-      <CaseStudy data={tidli} />
+      <CaseStudy data={tidli} next={nextPublicCase("tidli")} />
     </>
   );
 }

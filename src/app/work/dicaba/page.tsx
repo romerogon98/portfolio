@@ -1,4 +1,5 @@
 import CaseStudy from "@/components/CaseStudy";
+import { nextPublicCase } from "@/content/work/registry";
 import Nav from "@/components/Nav";
 import { dicaba } from "@/content/work/dicaba";
 
@@ -11,7 +12,7 @@ export default function DicabaPage() {
   return (
     <>
       <Nav light={dicaba.theme === "light"} />
-      <CaseStudy data={dicaba} />
+      <CaseStudy data={dicaba} next={nextPublicCase("dicaba")} />
     </>
   );
 }

@@ -69,7 +69,7 @@ export default function WorkGallery() {
         >
           {/* Intro panel */}
           <div className="mr-4 shrink-0">
-            <span className="text-sm uppercase tracking-widest text-white/40">
+            <span className="font-mono text-xs uppercase tracking-widest text-white/40">
               (Selected work)
             </span>
             <h2 className="mt-3 text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[0.95] tracking-[-0.04em] text-white">

@@ -1,4 +1,5 @@
 import CaseStudy from "@/components/CaseStudy";
+import { nextPublicCase } from "@/content/work/registry";
 import Nav from "@/components/Nav";
 import { etixen } from "@/content/work/etixen";
 
@@ -11,7 +12,7 @@ export default function EtixenPage() {
   return (
     <>
       <Nav light={etixen.theme === "light"} />
-      <CaseStudy data={etixen} />
+      <CaseStudy data={etixen} next={nextPublicCase("etixen")} />
     </>
   );
 }

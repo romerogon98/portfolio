@@ -71,7 +71,7 @@ export default function About() {
 
         {/* Statement */}
         <div>
-          <span className="text-sm uppercase tracking-widest text-white/40">
+          <span className="font-mono text-xs uppercase tracking-widest text-white/40">
             (About)
           </span>
           <div className="about-line mt-5 flex gap-4">

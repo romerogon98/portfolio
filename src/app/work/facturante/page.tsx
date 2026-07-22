@@ -1,4 +1,5 @@
 import CaseStudy from "@/components/CaseStudy";
+import { nextPublicCase } from "@/content/work/registry";
 import Nav from "@/components/Nav";
 import { facturante } from "@/content/work/facturante";
 
@@ -11,7 +12,7 @@ export default function FacturantePage() {
   return (
     <>
       <Nav light={facturante.theme === "light"} />
-      <CaseStudy data={facturante} />
+      <CaseStudy data={facturante} next={nextPublicCase("facturante")} />
     </>
   );
 }

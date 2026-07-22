@@ -84,7 +84,7 @@ export default function Haul() {
     >
       <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
-          <span className="text-sm uppercase tracking-widest text-white/40">
+          <span className="font-mono text-xs uppercase tracking-widest text-white/40">
             (Haul)
           </span>
           <h2 className="mt-2 text-[clamp(2rem,5vw,4rem)] font-normal tracking-[-0.04em] text-white">

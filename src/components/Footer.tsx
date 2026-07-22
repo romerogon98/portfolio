@@ -55,7 +55,7 @@ export default function Footer() {
       {/* Top — contact + columns */}
       <div className="relative z-10 flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
         <div className="max-w-xl">
-          <span className="text-sm uppercase tracking-widest text-white/40">
+          <span className="font-mono text-xs uppercase tracking-widest text-white/40">
             (Get in touch)
           </span>
           <a
@@ -69,8 +69,8 @@ export default function Footer() {
 
         <div className="flex gap-12 sm:gap-16">
           <div className="flex flex-col gap-3">
-            <span className="mb-1 text-xs uppercase tracking-widest text-white/30">
-              Social
+            <span className="mb-1 font-mono text-xs uppercase tracking-widest text-white/30">
+              (Social)
             </span>
             {SOCIALS.map((s) => (
               <a
@@ -85,8 +85,8 @@ export default function Footer() {
             ))}
           </div>
           <div className="flex flex-col gap-3">
-            <span className="mb-1 text-xs uppercase tracking-widest text-white/30">
-              Menu
+            <span className="mb-1 font-mono text-xs uppercase tracking-widest text-white/30">
+              (Menu)
             </span>
             {MENU.map((m) => {
               const cls =
@@ -111,7 +111,7 @@ export default function Footer() {
         <h2 className="font-normal leading-[0.85] tracking-[-0.04em] text-[clamp(2.75rem,15vw,13rem)]">
           Gonzalo Romero<span className="text-accent-600">.</span>
         </h2>
-        <div className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-5 text-sm text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-5 font-mono text-xs uppercase tracking-widest text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <span>Based in Germany · Available worldwide</span>
           <span className="tabular-nums">{time && `Berlin — ${time}`}</span>
           <span>© {new Date().getFullYear()} Gonzalo Romero</span>

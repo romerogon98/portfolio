@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import DecodeText from "@/components/DecodeText";
 
 // "My stack" — a bordered grid of cells with corner "+" markers (à la the
 // Daytona sponsors grid). The 10 visible slots continuously cycle through a
@@ -58,7 +59,7 @@ function ToolMark({ tool }: { tool: Tool }) {
         </span>
       )}
       <span className="whitespace-nowrap text-sm font-medium tracking-[-0.01em] text-white/85">
-        {tool.name}
+        <DecodeText text={tool.name} scrambleClassName="text-accent-500" />
       </span>
     </div>
   );
@@ -86,7 +87,7 @@ export default function Stack() {
 
   return (
     <section id="stack" className="bg-black px-6 py-24 sm:px-10 md:py-32">
-      <span className="text-sm uppercase tracking-widest text-white/40">
+      <span className="font-mono text-xs uppercase tracking-widest text-white/40">
         (My stack)
       </span>
       <h2 className="mt-2 text-[clamp(1.5rem,3.5vw,2.5rem)] font-normal tracking-[-0.03em] text-white">

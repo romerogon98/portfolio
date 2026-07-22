@@ -11,6 +11,7 @@
   --font-sans: var(--font-instrument-sans);
   /* Serif dropped site-wide — any residual font-serif falls back to the sans. */
   --font-serif: var(--font-instrument-sans);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 /* Brand-orange text selection everywhere. */

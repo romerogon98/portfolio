@@ -1,16 +1,52 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { OriginButton } from "@/components/ui/OriginButton";
+import TransitionLink from "@/components/TransitionLink";
+import { getLenis } from "@/components/SmoothScroll";
 import type { CaseStudy as CaseStudyData } from "@/content/work/types";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function CaseStudy({ data }: { data: CaseStudyData }) {
+export type CaseRef = {
+  href: string;
+  title: string;
+  subtitle: string;
+  heroImage?: string;
+  tint?: string;
+};
+
+export default function CaseStudy({
+  data,
+  next,
+}: {
+  data: CaseStudyData;
+  next?: CaseRef | null;
+}) {
   const scope = useRef<HTMLDivElement>(null);
+  const heroSentinel = useRef<HTMLDivElement>(null);
+  const [showBar, setShowBar] = useState(false);
+
+  // Reveal the sticky bottom bar once the hero (and its live button) is gone.
+  useEffect(() => {
+    const el = heroSentinel.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setShowBar(!entry.isIntersecting),
+      { rootMargin: "-80px 0px 0px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const backToTop = () => {
+    const lenis = getLenis();
+    if (lenis) lenis.scrollTo(0, { duration: 1 });
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -61,7 +97,11 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
     body: light ? "text-neutral-700" : "text-white/80",
     bullet: light ? "bg-neutral-400" : "bg-white/40",
     frame: light ? "border-neutral-200" : "border-white/10",
+    bar: light
+      ? "border-neutral-200 bg-white/70 text-neutral-900"
+      : "border-white/10 bg-black/50 text-white",
   };
+  const monoLabel = `font-mono uppercase tracking-wider ${t.label}`;
 
   return (
     <div ref={scope} className={t.page}>
@@ -106,23 +146,26 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
           className={`cs-hero-meta mt-12 grid grid-cols-2 gap-6 border-t pt-6 text-sm sm:grid-cols-4 ${t.rule}`}
         >
           <div>
-            <dt className={t.label}>Year</dt>
+            <dt className={`text-[11px] ${monoLabel}`}>Year</dt>
             <dd className="mt-1">{data.year}</dd>
           </div>
           <div>
-            <dt className={t.label}>Client</dt>
+            <dt className={`text-[11px] ${monoLabel}`}>Client</dt>
             <dd className="mt-1">{data.client}</dd>
           </div>
           <div>
-            <dt className={t.label}>Role</dt>
+            <dt className={`text-[11px] ${monoLabel}`}>Role</dt>
             <dd className="mt-1">{data.role}</dd>
           </div>
           <div>
-            <dt className={t.label}>Duration</dt>
+            <dt className={`text-[11px] ${monoLabel}`}>Duration</dt>
             <dd className="mt-1">{data.duration}</dd>
           </div>
         </dl>
       </section>
+
+      {/* Sentinel — once this scrolls above the fold, the sticky bar appears. */}
+      <div ref={heroSentinel} aria-hidden className="h-0" />
 
       <section className="mx-auto max-w-3xl px-6 py-24 sm:px-10">
         <p className={`cs-reveal text-2xl leading-relaxed sm:text-3xl ${t.intro}`}>
@@ -138,7 +181,7 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
       {data.sections.map((section) => (
         <section key={section.heading} className="mx-auto max-w-3xl px-6 pb-24 sm:px-10">
           <h2
-            className={`cs-reveal text-sm font-semibold uppercase tracking-widest ${t.label}`}
+            className={`cs-reveal font-mono text-xs font-semibold uppercase tracking-widest ${t.label}`}
           >
             {section.heading}
           </h2>
@@ -189,7 +232,7 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
       {data.gallery && data.gallery.length > 0 && (
         <section className="mx-auto max-w-5xl px-6 pb-28 sm:px-10">
           <h2
-            className={`cs-reveal text-sm font-semibold uppercase tracking-widest ${t.label}`}
+            className={`cs-reveal font-mono text-xs font-semibold uppercase tracking-widest ${t.label}`}
           >
             Gallery
           </h2>
@@ -212,6 +255,95 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
           </div>
         </section>
       )}
+
+      {next && (
+        <TransitionLink
+          href={next.href}
+          className={`group relative block border-t ${t.frame}`}
+        >
+          <section className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-20 sm:flex-row sm:items-center sm:justify-between sm:px-10">
+            <div>
+              <span className={`text-xs ${monoLabel}`}>(Next case)</span>
+              <h2 className="mt-3 text-[clamp(2rem,5vw,3.5rem)] font-normal leading-[1.02] tracking-[-0.04em]">
+                {next.title}
+              </h2>
+              <p className={`mt-2 max-w-md ${t.subtitle}`}>{next.subtitle}</p>
+            </div>
+            <div
+              className={`relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-lg border sm:w-64 ${t.frame}`}
+            >
+              {next.heroImage ? (
+                <Image
+                  src={next.heroImage}
+                  alt={next.title}
+                  fill
+                  sizes="256px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : (
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${
+                    next.tint ?? "from-accent-500 to-accent-950"
+                  }`}
+                />
+              )}
+            </div>
+          </section>
+        </TransitionLink>
+      )}
+
+      {/* Sticky bottom bar — appears once the hero live button is out of view. */}
+      <div
+        className={`pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-4 pb-4 transition-all duration-300 print:hidden ${
+          showBar ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+        }`}
+      >
+        <div
+          className={`flex items-center gap-2 rounded-full border p-2 backdrop-blur-xl ${t.bar} ${
+            showBar ? "pointer-events-auto" : "pointer-events-none"
+          }`}
+        >
+          <button
+            type="button"
+            onClick={backToTop}
+            aria-label="Back to top"
+            className={`flex h-10 w-10 items-center justify-center rounded-full transition-colors ${
+              light ? "hover:bg-black/5" : "hover:bg-white/10"
+            }`}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path
+                d="M6 14l6-6 6 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+          {data.liveUrl && (
+            <a
+              href={data.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex h-10 items-center gap-2 rounded-full px-5 text-sm font-medium ${
+                light ? "bg-neutral-900 text-white" : "bg-white text-black"
+              }`}
+            >
+              Visit live site
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M7 17L17 7M17 7H8M17 7v9"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
