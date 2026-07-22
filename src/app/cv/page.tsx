@@ -17,7 +17,7 @@ const CONTACT = [
     href: "https://www.linkedin.com/in/romero-gonzalo",
   },
   { value: "behance.net/romerogonzalo", href: "https://www.behance.net/romerogonzalo" },
-  { value: "gonzalo-romero.vercel.app", href: "https://gonzalo-romero.vercel.app" },
+  { value: "romerogon.vercel.app", href: "https://romerogon.vercel.app" },
 ];
 
 const ABOUT = [
