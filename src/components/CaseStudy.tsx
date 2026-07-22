@@ -35,7 +35,10 @@ export default function CaseStudy({
     const el = heroSentinel.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([entry]) => setShowBar(!entry.isIntersecting),
+      // Only when the sentinel has scrolled ABOVE the viewport — a sentinel
+      // still below the fold (short viewports at load) must not trigger it.
+      ([entry]) =>
+        setShowBar(!entry.isIntersecting && entry.boundingClientRect.top <= 0),
       { rootMargin: "-80px 0px 0px 0px" }
     );
     io.observe(el);

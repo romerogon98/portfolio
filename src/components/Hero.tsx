@@ -43,7 +43,8 @@ function useBerlinTime() {
 function MarqueeLine({ text, dir }: { text: string; dir: "left" | "right" }) {
   const cls = dir === "right" ? "kinetic-rev" : "kinetic";
   const dur = `${text.length * SECONDS_PER_CHAR}s`;
-  const Group = () => (
+  // Plain JSX (not a nested component) so React doesn't remount it per render.
+  const group = (
     <span className="flex shrink-0">
       {[0, 1].map((i) => (
         <span
@@ -61,8 +62,8 @@ function MarqueeLine({ text, dir }: { text: string; dir: "left" | "right" }) {
         className={`${cls} flex w-max`}
         style={{ "--dur": dur } as React.CSSProperties}
       >
-        <Group />
-        <Group />
+        {group}
+        {group}
       </div>
     </div>
   );

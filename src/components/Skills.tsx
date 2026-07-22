@@ -3,11 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { OriginButton } from "@/components/ui/OriginButton";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const EMAIL = "romerogon98@gmail.com";
 
 type Category = { name: string; items: string[] };
 
@@ -57,13 +54,6 @@ export default function Skills() {
         ease: "power3.out",
         scrollTrigger: { trigger: scope.current, start: "top 70%" },
       });
-      gsap.to(".skills-arrow", {
-        x: 14,
-        duration: 1,
-        ease: "power1.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
     }, scope);
 
     return () => ctx.revert();
@@ -87,30 +77,6 @@ export default function Skills() {
             <span className="text-accent-400">no-code</span> development.
           </h2>
 
-          <OriginButton
-            onClick={() => {
-              window.location.href = `mailto:${EMAIL}`;
-            }}
-            className="mt-10 self-start"
-          >
-            Contact me
-            <svg
-              className="skills-arrow"
-              width="34"
-              height="14"
-              viewBox="0 0 40 16"
-              fill="none"
-              aria-hidden
-            >
-              <path
-                d="M32 1l7 7-7 7M0 8h39"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </OriginButton>
         </div>
 
         {/* Right — accordion */}

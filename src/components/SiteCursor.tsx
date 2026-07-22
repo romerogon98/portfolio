@@ -1,23 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
+
+const FINE_POINTER = "(hover: hover) and (pointer: fine)";
+
+function subscribeFinePointer(onChange: () => void) {
+  const mq = window.matchMedia(FINE_POINTER);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
 
 // Global white cursor: a single dot that springs after the pointer across the
 // whole site, replacing the native cursor. Only on fine pointers (mouse) —
 // touch devices keep their normal behavior and this renders nothing.
 export default function SiteCursor() {
-  const [enabled, setEnabled] = useState(false);
+  // false on the server, then synced from the media query on the client.
+  const enabled = useSyncExternalStore(
+    subscribeFinePointer,
+    () => window.matchMedia(FINE_POINTER).matches,
+    () => false
+  );
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
   const springX = useSpring(x, { damping: 30, stiffness: 500, mass: 0.4 });
   const springY = useSpring(y, { damping: 30, stiffness: 500, mass: 0.4 });
-
-  useEffect(() => {
-    setEnabled(
-      window.matchMedia("(hover: hover) and (pointer: fine)").matches
-    );
-  }, []);
 
   useEffect(() => {
     if (!enabled) return;
