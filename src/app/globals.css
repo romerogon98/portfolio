@@ -1,26 +1,162 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-instrument-sans);
+  /* Serif dropped site-wide — any residual font-serif falls back to the sans. */
+  --font-serif: var(--font-instrument-sans);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Brand-orange text selection everywhere. */
+::selection {
+  background: #ff4d00;
+  color: #0a0a0a;
+}
+::-moz-selection {
+  background: #ff4d00;
+  color: #0a0a0a;
+}
+
+/* Brand orange (#FF4D00, the Devicons orange). Only the one solid tone is used
+   as an accent — 400/500/600 all resolve to it so no mid-orange ever appears;
+   the darker steps stay only for the frosted-card / glow gradients. */
+@theme {
+  --color-accent-50: #fff3ec;
+  --color-accent-100: #ffe2d1;
+  --color-accent-200: #ffc2a1;
+  --color-accent-300: #ff9c6b;
+  --color-accent-400: #ff4d00;
+  --color-accent-500: #ff4d00;
+  --color-accent-600: #ff4d00;
+  --color-accent-700: #b83700;
+  --color-accent-800: #8f2b00;
+  --color-accent-900: #742300;
+  --color-accent-950: #3f1200;
+}
+
+/* shadcn-style tokens used by OriginButton. Registered so Tailwind emits the
+   utilities (bg-card, border-border, bg-muted, ring-ring…); each button also
+   overrides these vars inline, so these defaults only matter as a fallback. */
+@theme {
+  --color-border: #2b2a25;
+  --color-card: #111111;
+  --color-card-foreground: #f6f3ec;
+  --color-muted: #171716;
+  --color-muted-foreground: #9a958a;
+  --color-ring: rgba(246, 243, 236, 0.18);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Global white cursor — hide the native arrow/pointer everywhere once JS
+   confirms a fine pointer. Touch devices never get this class. */
+.site-cursor-active,
+.site-cursor-active * {
+  cursor: none !important;
+}
+
+/* CV print / save-as-PDF: flip the résumé to a clean light layout and drop
+   chrome (nav, cursor, the download button). Keeps accent text red. */
+@media print {
+  .cv-no-print {
+    display: none !important;
+  }
+  .cv-page {
+    background: #ffffff !important;
+    padding-top: 1.5rem !important;
+    color: #111111 !important;
+  }
+  .cv-page * {
+    color: #111111 !important;
+    border-color: #e5e5e5 !important;
+    background: transparent !important;
+  }
+  .cv-page .cv-accent {
+    color: #ff4d00 !important;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Hero scroll-indicator bead */
+@keyframes scrollBead {
+  0% {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(44px);
+    opacity: 0;
+  }
+}
+.scroll-bead {
+  animation: scrollBead 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-bead {
+    animation: none;
+  }
+}
+
+/* Horizontal marquee (Stack) — two identical groups, shift by one group */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Hero kinetic type — same keyframe, per-line speed via --dur, rev = scroll right */
+.kinetic {
+  animation: marquee var(--dur, 30s) linear infinite;
+}
+.kinetic-rev {
+  animation: marquee var(--dur, 30s) linear infinite reverse;
+}
+@media (prefers-reduced-motion: reduce) {
+  .kinetic,
+  .kinetic-rev {
+    animation: none;
+  }
 }
