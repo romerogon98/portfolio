@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale } from "next-intl/server";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import PageTransition from "@/components/PageTransition";
 import SiteCursor from "@/components/SiteCursor";
 import Noise from "@/components/Noise";
+import SoundProvider from "@/components/SoundProvider";
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
@@ -24,22 +27,25 @@ export const metadata: Metadata = {
     "Portfolio of Gonzalo Romero, UX/UI Designer and No-Code Developer based in Germany.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${instrumentSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <SmoothScroll />
-        <SiteCursor />
-        <Noise />
-        <PageTransition />
-        {children}
+        <NextIntlClientProvider>
+          <SmoothScroll />
+          <SiteCursor />
+          <Noise />
+          <PageTransition />
+          <SoundProvider>{children}</SoundProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

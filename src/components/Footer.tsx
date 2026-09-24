@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import GradientField from "@/components/GradientField";
 import TransitionLink from "@/components/TransitionLink";
+import ScrambleText from "@/components/ScrambleText";
 
 const EMAIL = "romerogon98@gmail.com";
 
@@ -78,9 +79,9 @@ export default function Footer() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base font-medium uppercase tracking-widest text-white/60 transition-colors hover:text-white"
+                className="w-fit font-mono text-sm font-medium uppercase tracking-widest text-white/60 transition-colors hover:text-white"
               >
-                {s.label}
+                <ScrambleText text={s.label} />
               </a>
             ))}
           </div>
@@ -90,15 +91,15 @@ export default function Footer() {
             </span>
             {MENU.map((m) => {
               const cls =
-                "text-base font-medium uppercase tracking-widest text-white/60 transition-colors hover:text-white";
+                "w-fit font-mono text-sm font-medium uppercase tracking-widest text-white/60 transition-colors hover:text-white";
               // Page routes get the curtain transition; in-page anchors stay plain.
               return m.href.startsWith("/") ? (
                 <TransitionLink key={m.label} href={m.href} className={cls}>
-                  {m.label}
+                  <ScrambleText text={m.label} />
                 </TransitionLink>
               ) : (
                 <a key={m.label} href={m.href} className={cls}>
-                  {m.label}
+                  <ScrambleText text={m.label} />
                 </a>
               );
             })}

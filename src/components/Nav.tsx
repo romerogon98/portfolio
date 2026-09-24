@@ -1,22 +1,40 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { type MouseEvent, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { getLenis } from "@/components/SmoothScroll";
 import TransitionLink from "@/components/TransitionLink";
 import SoundToggle from "@/components/SoundToggle";
+import ScrambleText from "@/components/ScrambleText";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import Wordmark from "@/components/Wordmark";
 
 const LINKS = [
-  { href: "/#work", label: "Work" },
-  { href: "/#about", label: "About" },
-  { href: "/#contact", label: "Contact" },
-];
+  { href: "/#work", key: "work" },
+  { href: "/#about", key: "about" },
+  { href: "/#contact", key: "contact" },
+] as const;
 
 export default function Nav({ light = false }: { light?: boolean }) {
   const header = useRef<HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const t = useTranslations("nav");
+
+  // Logo click: on the home page there's nowhere to navigate, so smooth-scroll
+  // back to the top instead of no-opping. On any other page, fall through to
+  // TransitionLink's curtain navigation to "/" (which lands at the top).
+  const handleLogoClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    setOpen(false);
+    if (pathname !== "/") return;
+    e.preventDefault();
+    const lenis = getLenis();
+    if (lenis) lenis.scrollTo(0, { duration: 1.1 });
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   // Dark text over light pages (e.g. the white CV). Open menu is always a dark
   // overlay, so bar text/lines flip back to white while the menu is open.
   const darkText = light && !open;
@@ -82,23 +100,26 @@ export default function Nav({ light = false }: { light?: boolean }) {
         <TransitionLink
           href="/"
           aria-label="Gonzalo Romero — home"
-          className="nav-item"
+          onClick={handleLogoClick}
+          className="nav-item group"
         >
-          <Wordmark className="h-6 w-auto sm:h-7" />
+          <Wordmark className="h-6 w-auto transition-transform duration-300 ease-out group-hover:-translate-y-0.5 sm:h-7" />
         </TransitionLink>
 
-        <nav className="hidden items-center gap-7 text-base font-semibold tracking-[-0.02em] sm:flex">
+        <nav className="hidden items-center gap-7 font-mono text-sm font-medium uppercase tracking-wide sm:flex">
           {LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
               className="nav-item opacity-80 transition-opacity hover:opacity-100"
             >
-              {link.label}
+              <ScrambleText text={t(link.key)} />
             </a>
           ))}
           <SoundToggle />
-          <span className="nav-item opacity-50">EN</span>
+          <div className="nav-item">
+            <LocaleSwitcher />
+          </div>
         </nav>
 
         <button
@@ -144,14 +165,14 @@ export default function Nav({ light = false }: { light?: boolean }) {
               <span className="text-sm font-medium tabular-nums text-accent-500">
                 0{i + 1}
               </span>
-              {link.label}
+              {t(link.key)}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center justify-between px-6 py-6 text-sm text-white/40">
+        <div className="flex items-center justify-between px-6 py-6 font-mono text-sm uppercase text-white/40">
           <span>© {new Date().getFullYear()} Gonzalo Romero</span>
-          <span>EN</span>
+          <LocaleSwitcher />
         </div>
       </div>
     </>

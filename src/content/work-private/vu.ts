@@ -3,73 +3,173 @@ import type { CaseStudy } from "@/content/work/types";
 export const vu: CaseStudy = {
   slug: "vu",
   title: "VU",
-  subtitle: "Marketing site for a digital identity and fraud-prevention platform",
+  subtitle: "A trilingual demand engine for a LATAM digital identity platform",
   year: "2026",
   client: "VU (VU Security)",
-  role: "UX/UI Designer · Marketing Website",
-  duration: "Ongoing partnership (Phase 1 + Phase 2)",
-  tint: "from-sky-800 to-slate-950",
+  role: "UX/UI Designer · Full Website",
+  duration: "Launch March 2026 · ongoing monthly retainer",
+  tint: "from-orange-700 to-neutral-950",
+  cover: "/work/vu/stills/cover.webp",
+  heroVideo: {
+    sources: ["/work/vu/mosaic.webm", "/work/vu/mosaic.mp4"],
+    fallback: "/work/vu/stills/hero-fallback-mobile.webp",
+  },
   liveUrl: "https://www.vusecurity.com/",
   intro:
-    "VU is a digital identity and fraud-prevention platform used across Latin America — identity verification, biometric onboarding, authentication and anti-fraud, built into a single modular system (VU ONE). With nearly two decades in the market, they protect 350M+ users and are trusted by 170+ banks, fintechs and government agencies. Litebox partnered with VU to rebuild their marketing site into a fast, multilingual product story, and the engagement has since grown into an ongoing web, SEO and growth partnership.",
+    "VU is a Latin American digital identity company — identity verification, biometric authentication and real-time fraud detection, consolidated in a single platform (VU ONE) and sold to banks, gaming operators, retailers, healthcare providers and governments across Argentina, Brazil, Chile, Colombia and Mexico. They arrived at Litebox with a mature product and an enterprise sales motion that worked, but a marketing site that generated almost none of their pipeline. We designed and built a new site from scratch, and the project has since become an ongoing design, development, content and growth retainer.",
   context:
-    "VU needed a marketing site that could translate a broad, technical security suite into something a non-technical buyer could actually understand and act on — while working natively in three languages (Spanish, English, Portuguese) for a Latin American audience. The site also had to be a real acquisition engine: fast to load, measurable end to end, and built to scale page by page as the product story expanded.",
+    "In VU's market, the conversation starts with regulation: a compliance officer facing a new AML rule, a CISO after a fraud incident, a product lead replacing a vendor. Each arrives with a specific question about a specific country. The old site answered none of them by name, search traffic was almost entirely branded, and the leads that did come in arrived in spikes nobody could trace back to a source.",
   sections: [
     {
       heading: "Challenge",
       body: [
-        "VU's product isn't one thing — it's verification, authentication, and fraud protection layered into a modular platform that maps to the entire digital customer journey. The core UX challenge was structuring that breadth so a visitor didn't drown in it: leading with a single, human promise ('restore trust in every digital interaction') and only then unfolding the problem, the solution, and the specific capabilities behind it.",
-        "On top of the information architecture, the site had to earn trust instantly for an enterprise, security-conscious audience — banks, governments, fintechs — while staying fully multilingual and measurable. Every layout decision had to survive translation into Spanish, English and Portuguese, and every CTA had to be trackable so the site could be optimized after launch, not just shipped.",
+        "The site had to speak to Argentina, Brazil and the wider region as separate markets, not as one page translated three times. Spanish, English and Brazilian Portuguese each needed to hold up in the same layouts, and leads had to reach the sales rep who actually covers that country.",
+        "It also had to be found. The category itself barely gets searched in LATAM — terms like 'KYC provider' or 'identity verification software' show no measurable volume in Argentina, Mexico or Colombia. What people do search is the regulation: the law, the deadline, the document type, the regulator by name. And the biggest lead source, conferences, was completely invisible: three spikes in 120 days, all landing as direct traffic on a generic contact page.",
+      ],
+      media: [
+        {
+          src: "/work/vu/stills/identity-orange.webp",
+          alt: "VU “Identity” key visual on an orange gradient",
+        },
+        {
+          src: "/work/vu/stills/face-scan.webp",
+          alt: "Person checking their phone with a VU biometric verification overlay",
+        },
+        {
+          src: "/work/vu/stills/digital-trust.webp",
+          alt: "“Leading the way in Digital Trust” VU key visual",
+          wide: true,
+        },
       ],
     },
     {
       heading: "Solution",
       body: [
-        "We designed the site around a clear narrative spine — mission, the problem (fragmented digital identity), VU's solution (consolidated, unforgeable identity), and then the concrete capabilities (Verify, Authenticate, Protect). Trust markers are woven through the whole flow rather than buried: a client logo wall up top, real-world impact cases with hard numbers, big proof stats (350M+ users, 170+ organizations, iBeta/ISO certifications), and a simple five-step onboarding section that makes 'live in days' feel believable.",
-        "The system was built to be modular and multilingual from the ground up, mirroring how VU's own product works — add what you need, leave out what you don't. Layouts were designed to hold up across three languages, and every interactive element (demo CTAs, forms) was specified for analytics tracking and CRM capture, so the site launched as a measurable funnel rather than a static brochure.",
+        "We shipped the new site on 18 March 2026 in three languages, with the contact form routing leads into Microsoft Dynamics by country. Tracking was specified alongside the design rather than bolted on after — which paid off in May, when a tracking audit caught that the 'Request a demo' buttons on the homepage and every solutions page weren't firing any event at all.",
+        "Underneath the product pages we designed a content layer built around how buyers actually search: capability pages generated from VU's product wiki, seven regulation pages for Argentina, a glossary, a fraud-types hub, and comparison pages the team edits from the CMS. Everything comes out of templates plus a data dictionary, so adding the next country is a week of work instead of a quarter — and the team can publish without a designer or developer in the loop.",
+        "For events, we turned a one-off problem into a repeatable cycle: one UTM per physical surface, a QR code per piece, a dedicated landing per event, and a report that compares each event against the last. FEBRABAN TECH 2026 was the first to run on it — a trilingual landing shipped in 13 days, with a raffle as the lead magnet, converting 31% of visitors into leads.",
       ],
       list: [
-        "A narrative-driven homepage that unfolds the platform step by step (mission → problem → solution → capabilities → proof)",
-        "Trust-first UX: client logos, real impact cases with metrics, certification badges and proof stats surfaced throughout",
-        "A modular capability system (Verify · Authenticate · Protect) that mirrors VU's own product architecture",
-        "Fully multilingual design (Spanish, English, Portuguese) with layouts built to survive translation",
-        "Every CTA and form instrumented for analytics and CRM, so the site is a measurable acquisition funnel",
+        "A trilingual marketing site (ES · EN · PT-BR) in production since March 2026, with country-based lead routing into Dynamics",
+        "A template-driven content system — capability, regulation, glossary, fraud-type and comparison pages — built to scale country by country",
+        "Every page shipped with FAQ blocks, structured data and keywords validated against real search volume",
+        "An event landing template plus a UTM and QR convention, making conferences measurable for the first time",
+        "A measurement layer the team can trust after an audit caught the main demo CTA firing no event",
+      ],
+      media: [
+        {
+          src: "/work/vu/stills/website.webp",
+          alt: "VU marketing site homepage on a large screen",
+          wide: true,
+        },
+        {
+          src: "/work/vu/stills/phone.webp",
+          alt: "VU mobile screen: “We're leading the way to digital trust”",
+        },
+        {
+          src: "/work/vu/stills/icons.webp",
+          alt: "VU icon set: face scan, plug, shield and fingerprint",
+        },
       ],
       closing:
-        "What started as the marketing site grew into an ongoing partnership: a second phase added SEO, competitor comparison pages, tracking audits, blog content and paid-social creative — all under the same visual and UX system.",
+        "The biggest lesson came from FEBRABAN itself: the stand totems were printed by VU with QR codes that had no UTMs, so most of that traffic arrived unattributed. Now we send the client every QR code, one per physical surface, before they build their own pieces.",
+    },
+    {
+      heading: "Visual Language",
+      body: [
+        "The site speaks the same language as the rest of VU's brand: a rotating V mark, Roobert as the typeface, a restrained palette of orange, dark grey and beige, and a line-icon set built around identity — face scan, fingerprint, shield. Carrying that system into the web meant the site felt like the same company a buyer had just met at a stand, on a billboard or in a printed report.",
+      ],
+      media: [
+        {
+          src: "/work/vu/rotating-v.webm",
+          poster: "/work/vu/posters/rotating-v.webp",
+          alt: "VU rotating V mark",
+        },
+        {
+          src: "/work/vu/roobert-typography.webm",
+          poster: "/work/vu/posters/roobert-typography.webp",
+          alt: "Roobert typography specimen for VU",
+        },
+        {
+          src: "/work/vu/stills/palette-fallback.webp",
+          lottie: "/work/vu/palette.json",
+          alt: "VU color palette: orange, middle orange, dark grey, beige and white",
+        },
+        {
+          src: "/work/vu/stories.webm",
+          poster: "/work/vu/posters/stories.webp",
+          alt: "VU animated social stories",
+        },
+      ],
     },
     {
       heading: "My Role",
       body: [
-        "I worked as UX/UI designer on the marketing site as part of the Litebox team assigned to VU, focused on the website's structure, layouts and interface — turning a broad, technical security suite into a clear, conversion-oriented experience across three languages.",
+        "I designed the full UX/UI of the site as part of the Litebox team assigned to VU — from the information architecture to every page and template, including the ones the content and event work runs on.",
       ],
       list: [
-        "Designed the site's UX structure and information architecture — how the platform's breadth unfolds section by section",
-        "Designed the UI: homepage, solution/capability sections, impact and onboarding flows",
-        "Built layouts that hold up across Spanish, English and Portuguese",
-        "Designed trust and conversion elements (logo walls, impact cases, proof stats, demo CTAs)",
-        "Kept the interface consistent as the site expanded into new pages across phases",
+        "Designed the site's information architecture and UI across home, solutions and capability pages",
+        "Designed layouts that hold up in Spanish, English and Brazilian Portuguese",
+        "Designed the page templates behind the regulation, glossary, fraud-type and comparison content",
+        "Designed the event landing template, starting with FEBRABAN TECH 2026",
+        "Specified CTAs and forms with tracking in mind, and kept the system consistent as the retainer expanded it",
       ],
     },
     {
       heading: "Process",
       list: [
-        "Discovery — understanding VU's product suite, audience (banks, government, fintech) and multilingual requirements",
-        "Architecture — structuring the platform's breadth into a clear narrative flow",
-        "UI design — homepage and section design in Figma, built as a modular, translation-ready system",
-        "Build & QA — handoff to development, i18n implementation, cross-language and tracking QA",
-        "Phase 2 expansion — new pages (comparativas, blog), SEO and tracking layered on the same system",
+        "Discovery — VU's product, the buyers (compliance, security, product) and the five markets they sell into",
+        "Architecture & UI — a trilingual site designed as a modular system in Figma",
+        "Build & launch — development, Dynamics routing and instrumentation, live on 18 March 2026",
+        "Content engine — search research, then templates for regulation, glossary, fraud-type and comparison pages",
+        "Growth — tracking audit, event landings and per-event reporting under a monthly retainer",
       ],
     },
     {
       heading: "Learnings",
       list: [
-        "Translating a broad, technical security platform into a UX simple enough for a non-technical buyer, without dumbing down the product",
-        "Designing an interface that has to stay coherent across three languages from day one",
-        "Building trust into UX for an enterprise, security-conscious audience through proof, not just claims",
-        "Designing a marketing site as a measurable funnel — every CTA instrumented — rather than a static page",
-        "Working within an ongoing, multi-phase partnership where the system has to keep scaling",
+        "Localizing for a market means answering its questions, not translating the same page",
+        "When the category isn't searched, design for the question the buyer is really asking — here, the regulation",
+        "Instrumentation belongs in the design, not after launch; the audit proved it",
+        "Designing templates instead of pages is what lets a small team scale content across countries",
+        "Offline surfaces need the same rigor as the site — a QR code without a UTM is a lost lead",
       ],
+    },
+  ],
+  gallery: [
+    {
+      src: "/work/vu/stills/print-collateral.webp",
+      alt: "VU print collateral: brochures, fact sheet and posters",
+      wide: true,
+    },
+    {
+      src: "/work/vu/stills/annual-report.webp",
+      alt: "VU Annual Report 2026 and “Road to Digital Trust” spreads",
+    },
+    {
+      src: "/work/vu/business-cards.webm",
+      poster: "/work/vu/posters/business-cards.webp",
+      alt: "VU business cards",
+    },
+    {
+      src: "/work/vu/stills/billboard.webp",
+      alt: "“Verify and protect your users” VU billboard in a subway station",
+      wide: true,
+    },
+    {
+      src: "/work/vu/tshirt.webm",
+      poster: "/work/vu/posters/tshirt.webp",
+      alt: "VU branded t-shirt",
+    },
+    {
+      src: "/work/vu/tote-bag.webm",
+      poster: "/work/vu/posters/tote-bag.webp",
+      alt: "VU branded tote bag",
+    },
+    {
+      src: "/work/vu/stills/social-stories.webp",
+      alt: "VU social media posts",
+      wide: true,
     },
   ],
 };
