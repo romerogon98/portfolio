@@ -1,6 +1,7 @@
-import TransitionLink from "@/components/TransitionLink";
 import Nav from "@/components/Nav";
+import PrivateWorkList from "@/components/PrivateWorkList";
 import { PRIVATE_PROJECTS } from "@/content/work-private";
+import { DOCUMENTED } from "@/content/work-private/cases";
 
 export const metadata = {
   title: "Private work | Gonzalo Romero",
@@ -8,6 +9,14 @@ export const metadata = {
 };
 
 export default function PrivateWorkIndex() {
+  const items = PRIVATE_PROJECTS.map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    status: p.status,
+    img: DOCUMENTED[p.slug]?.cover ?? DOCUMENTED[p.slug]?.heroImage,
+    tint: DOCUMENTED[p.slug]?.tint,
+  }));
+
   return (
     <>
       <Nav />
@@ -23,36 +32,7 @@ export default function PrivateWorkIndex() {
           Under NDA — shared directly, never listed publicly.
         </p>
 
-        <ul className="mt-16 max-w-3xl divide-y divide-white/10 border-t border-white/10">
-          {PRIVATE_PROJECTS.map((p) => {
-            const live = p.status === "documented";
-            const row = (
-              <div className="flex items-center justify-between py-6">
-                <span className="text-2xl font-medium sm:text-3xl">
-                  {p.title}
-                </span>
-                <span className="font-mono text-xs uppercase tracking-widest text-white/40">
-                  {live ? "View case study →" : "Coming soon"}
-                </span>
-              </div>
-            );
-
-            return (
-              <li key={p.slug}>
-                {live ? (
-                  <TransitionLink
-                    href={`/work/private/${p.slug}`}
-                    className="block transition-opacity hover:opacity-70"
-                  >
-                    {row}
-                  </TransitionLink>
-                ) : (
-                  <div className="opacity-40">{row}</div>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        <PrivateWorkList items={items} />
       </main>
     </>
   );

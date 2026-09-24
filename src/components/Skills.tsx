@@ -71,7 +71,7 @@ export default function Skills() {
           <span className="font-mono text-xs uppercase tracking-widest text-white/40">
             (Skills)
           </span>
-          <h2 className="mt-6 max-w-md text-[clamp(1.75rem,3.2vw,2.75rem)] font-semibold uppercase leading-[1.1] tracking-[-0.02em]">
+          <h2 className="mt-6 max-w-md text-[clamp(1.5rem,3.5vw,2.5rem)] font-normal leading-[1.1] tracking-[-0.03em]">
             Multimedia designer with 5+ years of experience, focused on{" "}
             <span className="text-accent-400">UX/UI</span> and{" "}
             <span className="text-accent-400">no-code</span> development.
@@ -90,9 +90,9 @@ export default function Skills() {
               >
                 <button
                   onClick={() => setOpen(isOpen ? -1 : i)}
-                  className="flex w-full items-center justify-between py-6 text-left"
+                  className="group flex w-full items-center justify-between py-6 text-left"
                 >
-                  <span className="text-2xl font-normal tracking-[-0.02em] sm:text-3xl">
+                  <span className="text-2xl font-normal tracking-[-0.02em] transition-transform duration-300 ease-out group-hover:-translate-y-0.5 sm:text-3xl">
                     {cat.name}
                   </span>
                   <span className="text-2xl text-white/50">
