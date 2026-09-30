@@ -1,4 +1,5 @@
 import Nav from "@/components/Nav";
+import TransitionLink from "@/components/TransitionLink";
 import PrivateWorkList from "@/components/PrivateWorkList";
 import { PRIVATE_PROJECTS } from "@/content/work-private";
 import { DOCUMENTED } from "@/content/work-private/cases";
@@ -33,6 +34,13 @@ export default function PrivateWorkIndex() {
         </p>
 
         <PrivateWorkList items={items} />
+
+        <TransitionLink
+          href="/work/private/artifacts"
+          className="mt-16 inline-block font-mono text-xs uppercase tracking-widest text-white/40 transition-colors hover:text-white"
+        >
+          (Artifacts) — custom builds for SaaS →
+        </TransitionLink>
       </main>
     </>
   );

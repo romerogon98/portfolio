@@ -13,7 +13,6 @@ export default function Home() {
     <>
       <Nav />
 
-      {/* Page content — sits above the pinned Footer (z-10) and scrolls over it. */}
       <main className="relative z-10 bg-black">
         <Hero />
         <HistoryReveal />
@@ -24,8 +23,7 @@ export default function Home() {
         <Skills />
       </main>
 
-      {/* Reveal room + #contact anchor: as this scrolls past, the Footer shows. */}
-      <div id="contact" aria-hidden className="pointer-events-none h-screen" />
+      {/* Slides up over the pinned, shrinking Skills panel (see Skills.tsx). */}
       <Footer />
     </>
   );

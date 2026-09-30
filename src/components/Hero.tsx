@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import DecodeText from "@/components/DecodeText";
+import VectorWordmark from "@/components/VectorWordmark";
 
 const SOCIALS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/romero-gonzalo" },
@@ -11,15 +12,12 @@ const SOCIALS = [
   { label: "Instagram", href: "https://www.instagram.com/gonromero.jpg/" },
 ];
 
-// Kinetic-type hero: three oversized word-marquees scrolling in alternating
-// directions, with the B&W portrait centered on top. All lines share the same
-// linear speed (duration scales with text length) and ease-slow on hover.
-const SECONDS_PER_CHAR = 2;
-const LINES = [
-  { text: "NO-CODE DEVELOPER", dir: "right" },
-  { text: "UX/UI DESIGNER", dir: "left" },
-  { text: "CREATIVE", dir: "right" },
-] as const;
+// Hero: the role lines render as a WebGL vector wordmark filling the
+// background (selection marquee follows the pointer), with the B&W portrait
+// centered on top.
+const LINES = ["NO-CODE DEVELOPER", "UX/UI DESIGNER", "CREATIVE"];
+// One word per row on narrow screens so the type stays large around the photo.
+const COMPACT_LINES = ["NO-CODE", "DEVELOPER", "UX/UI", "DESIGNER", "CREATIVE"];
 
 function useBerlinTime() {
   const [t, setT] = useState("");
@@ -40,71 +38,25 @@ function useBerlinTime() {
   return t;
 }
 
-function MarqueeLine({ text, dir }: { text: string; dir: "left" | "right" }) {
-  const cls = dir === "right" ? "kinetic-rev" : "kinetic";
-  const dur = `${text.length * SECONDS_PER_CHAR}s`;
-  // Plain JSX (not a nested component) so React doesn't remount it per render.
-  const group = (
-    <span className="flex shrink-0">
-      {[0, 1].map((i) => (
-        <span
-          key={i}
-          className="whitespace-nowrap px-[0.14em] text-[13vw] font-bold uppercase leading-[0.92] tracking-[-0.02em]"
-        >
-          {text}
-        </span>
-      ))}
-    </span>
-  );
-  return (
-    <div className="hero-line flex overflow-hidden" aria-hidden>
-      <div
-        className={`${cls} flex w-max`}
-        style={{ "--dur": dur } as React.CSSProperties}
-      >
-        {group}
-        {group}
-      </div>
-    </div>
-  );
-}
-
 export default function Hero() {
   const scope = useRef<HTMLElement>(null);
-  const marquees = useRef<HTMLDivElement>(null);
   const time = useBerlinTime();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Order: photo first, then the text lines cascade in left → right → left,
-      // then the bottom bar.
+      // Order: photo first, then the wordmark fades up, then the bottom bar.
       gsap
         .timeline({ defaults: { ease: "power3.out" } })
         .from(".hero-photo", { autoAlpha: 0, scale: 0.9, duration: 1.1 })
         .from(
-          ".hero-line",
-          {
-            autoAlpha: 0,
-            xPercent: (i: number) => (i % 2 === 0 ? -14 : 14),
-            duration: 0.9,
-            stagger: 0.16,
-            ease: "power4.out",
-          },
+          ".hero-wordmark",
+          { autoAlpha: 0, scale: 1.04, duration: 1.2, ease: "power4.out" },
           "-=0.5"
         )
         .from(".hero-bar", { autoAlpha: 0, y: 16, duration: 0.7 }, "-=0.25");
     }, scope);
     return () => ctx.revert();
   }, []);
-
-  // Smoothly ease the marquee speed down on hover (Web Animations API keeps the
-  // scroll position continuous instead of jumping the way a CSS duration swap
-  // would).
-  const setRate = (rate: number) => {
-    marquees.current
-      ?.getAnimations({ subtree: true })
-      .forEach((a) => a.updatePlaybackRate?.(rate));
-  };
 
   return (
     <section
@@ -115,17 +67,10 @@ export default function Hero() {
         Gonzalo Romero — No-code developer, UX/UI designer, creative.
       </h1>
 
-      <div
-        ref={marquees}
-        onMouseEnter={() => setRate(0.35)}
-        onMouseLeave={() => setRate(1)}
-        className="relative z-10 flex select-none flex-col gap-[0.4vw] py-24"
-        aria-hidden
-      >
-        {LINES.map((l) => (
-          <MarqueeLine key={l.text} text={l.text} dir={l.dir} />
-        ))}
-      </div>
+      <VectorWordmark
+        lines={LINES}
+        compactLines={COMPACT_LINES}
+        className="hero-wordmark absolute inset-0 z-10" />
 
       <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
         <div className="hero-photo relative h-[46vh] w-[clamp(230px,32vw,440px)] overflow-hidden rounded-lg shadow-2xl shadow-black/50 ring-1 ring-white/10">

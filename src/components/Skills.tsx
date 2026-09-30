@@ -54,10 +54,34 @@ export default function Skills() {
         ease: "power3.out",
         scrollTrigger: { trigger: scope.current, start: "top 70%" },
       });
+
+      // Pinned panel with overscroll (GSAP demo): once the section's bottom
+      // meets the viewport's, it pins and shrinks/fades while the Footer slides
+      // up over it (pinSpacing false, so the Footer keeps scrolling).
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: scope.current,
+            start: "bottom bottom",
+            end: "bottom top",
+            pin: true,
+            pinSpacing: false,
+            scrub: true,
+          },
+        })
+        .fromTo(scope.current, { scale: 1, opacity: 1 }, { scale: 0.7, opacity: 0.5, duration: 0.9 })
+        .to(scope.current, { opacity: 0, duration: 0.1 });
     }, scope);
 
     return () => ctx.revert();
   }, []);
+
+  // The accordion changes the section's height (500ms grid transition), which
+  // moves the pin start — re-measure once it settles.
+  useEffect(() => {
+    const id = setTimeout(() => ScrollTrigger.refresh(), 520);
+    return () => clearTimeout(id);
+  }, [open]);
 
   return (
     <section
@@ -71,10 +95,12 @@ export default function Skills() {
           <span className="font-mono text-xs uppercase tracking-widest text-white/40">
             (Skills)
           </span>
-          <h2 className="mt-6 max-w-md text-[clamp(1.5rem,3.5vw,2.5rem)] font-normal leading-[1.1] tracking-[-0.03em]">
-            Multimedia designer with 5+ years of experience, focused on{" "}
-            <span className="text-accent-400">UX/UI</span> and{" "}
-            <span className="text-accent-400">no-code</span> development.
+          {/* text-pretty avoids a lone last word; nowrap keeps "5+ years" and
+              "no-code" from splitting across lines. */}
+          <h2 className="mt-6 max-w-md text-pretty text-[clamp(1.5rem,3.5vw,2.5rem)] font-normal leading-[1.1] tracking-[-0.03em]">
+            Multimedia designer with <span className="whitespace-nowrap">5+ years</span> of
+            experience, focused on <span className="text-accent-400">UX/UI</span> and{" "}
+            <span className="whitespace-nowrap text-accent-400">no-code</span> development.
           </h2>
 
         </div>

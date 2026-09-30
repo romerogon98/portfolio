@@ -6,6 +6,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import PageTransition from "@/components/PageTransition";
 import SiteCursor from "@/components/SiteCursor";
+import MarqueeCursor from "@/components/MarqueeCursor";
 import Noise from "@/components/Noise";
 import SoundProvider from "@/components/SoundProvider";
 
@@ -42,6 +43,7 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <SmoothScroll />
           <SiteCursor />
+          <MarqueeCursor />
           <Noise />
           <PageTransition />
           <SoundProvider>{children}</SoundProvider>
