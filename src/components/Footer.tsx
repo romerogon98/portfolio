@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import GradientField from "@/components/GradientField";
+import VectorWordmark from "@/components/VectorWordmark";
 import TransitionLink from "@/components/TransitionLink";
 import ScrambleText from "@/components/ScrambleText";
 
@@ -21,6 +22,7 @@ const MENU = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Private work", href: "/work/private" },
+  { label: "Artifacts", href: "/work/private/artifacts" },
   { label: "CV", href: "/cv" },
 ];
 
@@ -42,14 +44,18 @@ function useBerlinTime() {
   return time;
 }
 
-// Reveal footer (Luke Baffait style): pinned full-screen at the bottom of the
-// document (z-0) and uncovered as the page content (z-10) scrolls up over it.
-// The scroll room + the #contact anchor live in the sibling spacer in page.tsx.
+// Full-screen contact panel that slides up over the pinned Skills section
+// (GSAP "pinned panels with overscroll"), hence z-20 above <main> and the
+// rounded top edge. The name is the hero's VectorWordmark: same gradient type,
+// and the selection marquee grows to its size while hovered.
 export default function Footer() {
   const time = useBerlinTime();
 
   return (
-    <footer className="fixed inset-x-0 bottom-0 z-0 flex h-screen flex-col justify-between overflow-hidden bg-black px-6 pb-8 pt-28 text-white sm:px-10">
+    <footer
+      id="contact"
+      className="relative z-20 flex min-h-screen flex-col justify-between overflow-hidden rounded-t-[10px] border-t border-white/10 bg-black px-6 pb-8 pt-28 text-white sm:px-10"
+    >
       <GradientField className="opacity-30" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/40" />
 
@@ -109,12 +115,17 @@ export default function Footer() {
 
       {/* Bottom — oversized wordmark + meta */}
       <div className="relative z-10">
-        <h2 className="font-normal leading-[0.85] tracking-[-0.04em] text-[clamp(2.75rem,15vw,13rem)]">
-          Gonzalo Romero<span className="text-accent-600">.</span>
-        </h2>
+        <h2 className="sr-only">Gonzalo Romero</h2>
+        <VectorWordmark
+          lines={["Gonzalo Romero"]}
+          compactLines={["Gonzalo", "Romero"]}
+          weight={400}
+          letterSpacing="-0.04em"
+          className="relative aspect-[2/1] w-full sm:aspect-[5/1]"
+        />
         <div className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-5 font-mono text-xs uppercase tracking-widest text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <span>Based in Germany · Available worldwide</span>
-          <span className="tabular-nums">{time && `Berlin — ${time}`}</span>
+          <span className="tabular-nums">{time && `Frankfurt — ${time}`}</span>
           <span>© {new Date().getFullYear()} Gonzalo Romero</span>
         </div>
       </div>

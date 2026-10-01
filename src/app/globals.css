@@ -146,17 +146,3 @@ html.lenis body {
     animation: none;
   }
 }
-
-/* Hero kinetic type — same keyframe, per-line speed via --dur, rev = scroll right */
-.kinetic {
-  animation: marquee var(--dur, 30s) linear infinite;
-}
-.kinetic-rev {
-  animation: marquee var(--dur, 30s) linear infinite reverse;
-}
-@media (prefers-reduced-motion: reduce) {
-  .kinetic,
-  .kinetic-rev {
-    animation: none;
-  }
-}
