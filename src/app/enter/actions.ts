@@ -9,16 +9,22 @@ import {
   passwordMatches,
 } from "@/lib/privateAuth";
 
-export async function unlockPrivateWork(formData: FormData) {
+// Only same-site paths; "//host" or "/\host" would bounce visitors off-site.
+function safeFrom(value: FormDataEntryValue | null) {
+  const from = String(value ?? "");
+  return /^\/(?![/\\])/.test(from) ? from : "/";
+}
+
+export async function unlockSite(formData: FormData) {
   const password = String(formData.get("password") ?? "");
-  const from = String(formData.get("from") || "/work/private");
+  const from = safeFrom(formData.get("from"));
 
   const token = passwordMatches(password) ? computeAuthToken() : null;
 
   if (!token) {
     // Slow down naive brute-forcing; no lockout system on top of this.
     await new Promise((resolve) => setTimeout(resolve, 400));
-    redirect(`/work/private/enter?error=1&from=${encodeURIComponent(from)}`);
+    redirect(`/enter?error=1&from=${encodeURIComponent(from)}`);
   }
 
   const store = await cookies();

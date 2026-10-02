@@ -22,7 +22,7 @@ export default async function ArtifactClientPage({ params }: { params: Promise<{
   const c = getArtifactClient(client);
   if (!c) notFound();
   const entries = artifactEntries(c);
-  const base = `/work/private/artifacts/${c.slug}`;
+  const base = `/artifacts/${c.slug}`;
 
   return (
     <ClientTheme client={c}>
@@ -47,7 +47,7 @@ export default async function ArtifactClientPage({ params }: { params: Promise<{
           />
           <div className="relative">
             <TransitionLink
-              href="/work/private/artifacts"
+              href="/artifacts"
               className="font-mono text-xs uppercase tracking-[0.06em] text-[var(--a-muted)] transition-colors hover:text-[var(--a-fg)]"
             >
               ← Artifacts

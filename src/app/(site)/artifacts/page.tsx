@@ -30,7 +30,7 @@ export default function ArtifactsIndex() {
             const entries = artifactEntries(c);
             return (
               <li key={c.slug}>
-                <TransitionLink href={`/work/private/artifacts/${c.slug}`} className="group block">
+                <TransitionLink href={`/artifacts/${c.slug}`} className="group block">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-[10px] border border-white/10 bg-white/5">
                     {c.cover && (
                       <Image

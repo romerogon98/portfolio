@@ -5,18 +5,22 @@ import Image from "next/image";
 import TransitionLink from "@/components/TransitionLink";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { dicaba } from "@/content/work/dicaba";
-import { entuitive } from "@/content/work/entuitive";
-import { kapi } from "@/content/work/kapi";
-import { tidli } from "@/content/work/tidli";
-import { facturante } from "@/content/work/facturante";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CASES = [dicaba, entuitive, kapi, tidli, facturante];
+export type WorkGalleryItem = {
+  href: string;
+  title: string;
+  subtitle: string;
+  img?: string;
+  tint?: string;
+};
+
 const STAGGER = [0, 7, 2, 9, 4]; // vh vertical offset per card, meech-style
 
-export default function WorkGallery() {
+// Items are built on the server (see app/(site)/page.tsx) so the NDA case
+// content never ships in this client bundle — only the card fields do.
+export default function WorkGallery({ items }: { items: WorkGalleryItem[] }) {
   const scope = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
 
@@ -82,16 +86,16 @@ export default function WorkGallery() {
             </p>
           </div>
 
-          {CASES.map((c, i) => (
+          {items.map((c, i) => (
             <TransitionLink
-              key={c.slug}
-              href={`/work/${c.slug}`}
+              key={c.href}
+              href={c.href}
               className="group relative aspect-square w-[clamp(18rem,34vw,28rem)] shrink-0 overflow-hidden rounded-2xl border border-white/10"
-              style={{ marginTop: `${STAGGER[i]}vh` }}
+              style={{ marginTop: `${STAGGER[i % STAGGER.length]}vh` }}
             >
-              {c.heroImage ? (
+              {c.img ? (
                 <Image
-                  src={c.heroImage}
+                  src={c.img}
                   alt={c.title}
                   fill
                   sizes="(max-width: 640px) 70vw, 34vw"
@@ -115,28 +119,6 @@ export default function WorkGallery() {
             </TransitionLink>
           ))}
 
-          {/* Locked private-work card — blurred preview + CTA into the NDA index. */}
-          <TransitionLink
-            href="/work/private"
-            className="group relative flex aspect-square w-[clamp(18rem,34vw,28rem)] shrink-0 flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10"
-            style={{ marginTop: "2vh" }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-accent-700 via-accent-950 to-black" />
-            <div className="absolute inset-0 opacity-50 blur-2xl [background-image:radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_42%),radial-gradient(circle_at_72%_65%,rgba(255,120,80,0.35),transparent_48%)]" />
-            <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
-
-            <div className="relative z-10 flex flex-col items-center gap-5 px-6 text-center">
-              <span className="text-xs uppercase tracking-widest text-white/60">
-                Under NDA
-              </span>
-              <h3 className="text-3xl font-medium tracking-[-0.02em] text-white">
-                Private work
-              </h3>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors group-hover:bg-white group-hover:text-black">
-                Explore private work →
-              </span>
-            </div>
-          </TransitionLink>
         </div>
       </div>
     </section>

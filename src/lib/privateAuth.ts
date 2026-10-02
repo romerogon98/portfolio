@@ -1,6 +1,6 @@
 import { createHash, createHmac, timingSafeEqual } from "crypto";
 
-// Shared-password gate for /work/private — no per-user sessions, just a single
+// Shared-password gate for the whole site — no per-user sessions, just a single
 // HMAC-derived token stored in a cookie once the shared password is entered.
 export const PRIVATE_AUTH_COOKIE = "pw_auth";
 export const PRIVATE_AUTH_MAX_AGE = 60 * 60 * 24 * 30; // 30 days

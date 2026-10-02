@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { OriginButton } from "@/components/ui/OriginButton";
 import TransitionLink from "@/components/TransitionLink";
 import MosaicHero from "@/components/MosaicHero";
+import { HERO_SCENES } from "@/components/heroScenes";
 import CaseMediaGrid, { CaseGallery } from "@/components/CaseMediaGrid";
 import { navigateWithTransition } from "@/components/PageTransition";
 import { getLenis } from "@/components/SmoothScroll";
@@ -164,6 +165,10 @@ export default function CaseStudy({
     heroScrim: light
       ? "from-white via-white/75 to-white/25"
       : "from-black via-black/70 to-black/20",
+    // Lighter scrim for live heroes (video, 3D): just enough under the title.
+    liveScrim: light
+      ? "from-white via-white/50 via-25% to-transparent"
+      : "from-black via-black/40 via-30% to-transparent",
     subtitle: light ? "text-neutral-500" : "text-white/70",
     rule: light ? "border-neutral-200" : "border-white/15",
     label: light ? "text-neutral-400" : "text-white/40",
@@ -178,11 +183,14 @@ export default function CaseStudy({
       : "border-white/10 bg-black/50 text-white",
   };
   const monoLabel = `font-mono uppercase tracking-wider ${t.label}`;
+  const HeroScene = data.heroScene ? HERO_SCENES[data.heroScene] : null;
 
   return (
     <div ref={scope} className={t.page}>
       <section className="relative isolate flex min-h-screen flex-col justify-end overflow-hidden px-6 pb-14 pt-32 sm:px-10">
-        {data.heroVideo ? (
+        {HeroScene ? (
+          <HeroScene />
+        ) : data.heroVideo ? (
           <MosaicHero
             sources={data.heroVideo.sources}
             fallback={data.heroVideo.fallback}
@@ -222,7 +230,7 @@ export default function CaseStudy({
         )}
         <div
           className={`pointer-events-none absolute inset-0 -z-10 bg-gradient-to-t ${
-            data.heroVideo ? "from-black via-black/40 via-30% to-transparent" : t.heroScrim
+            HeroScene || data.heroVideo ? t.liveScrim : t.heroScrim
           }`}
         />
 

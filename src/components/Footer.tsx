@@ -21,8 +21,7 @@ const MENU = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Private work", href: "/work/private" },
-  { label: "Artifacts", href: "/work/private/artifacts" },
+  { label: "Artifacts", href: "/artifacts" },
   { label: "CV", href: "/cv" },
 ];
 
