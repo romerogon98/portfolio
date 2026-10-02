@@ -26,6 +26,8 @@ export const metadata: Metadata = {
   title: "Gonzalo Romero — UX/UI Designer & No-Code Developer",
   description:
     "Portfolio of Gonzalo Romero, UX/UI Designer and No-Code Developer based in Germany.",
+  // Password-protected portfolio: keep every page out of search results.
+  robots: { index: false, follow: false },
 };
 
 export default async function RootLayout({

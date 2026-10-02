@@ -1,8 +1,8 @@
-import { unlockPrivateWork } from "./actions";
+import { unlockSite } from "./actions";
 import { OriginButton } from "@/components/ui/OriginButton";
 
 export const metadata = {
-  title: "Private work | Gonzalo Romero",
+  title: "Gonzalo Romero",
   robots: { index: false, follow: false },
 };
 
@@ -16,21 +16,21 @@ export default async function EnterPage({
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-black px-6 text-center text-white">
       <span className="font-mono text-xs uppercase tracking-widest text-white/40">
-        (Private work)
+        (Gonzalo Romero)
       </span>
       <h1 className="mt-4 max-w-md text-[clamp(1.75rem,4vw,2.5rem)] font-normal tracking-[-0.03em]">
-        This work is under{" "}
-        <em className="not-italic text-accent-500">NDA</em>.
+        This portfolio is{" "}
+        <em className="not-italic text-accent-500">private</em>.
       </h1>
       <p className="mt-3 max-w-sm text-sm text-white/50">
-        Enter the password to view these confidential case studies.
+        Some of this work is under NDA. Enter the password to continue.
       </p>
 
       <form
-        action={unlockPrivateWork}
+        action={unlockSite}
         className="mt-10 flex w-full max-w-xs flex-col gap-4"
       >
-        <input type="hidden" name="from" value={from ?? "/work/private"} />
+        <input type="hidden" name="from" value={from ?? "/"} />
         <input
           type="password"
           name="password"

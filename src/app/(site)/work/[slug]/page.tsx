@@ -37,7 +37,7 @@ export default async function PrivateCaseStudyPage({
   const next =
     nextData && nextEntry
       ? {
-          href: `/work/private/${nextEntry.slug}`,
+          href: `/work/${nextEntry.slug}`,
           title: nextData.title,
           subtitle: nextData.subtitle,
           heroImage: nextData.cover ?? nextData.heroImage,

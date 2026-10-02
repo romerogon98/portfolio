@@ -24,6 +24,9 @@ export type CaseSection = {
   media?: CaseMedia[];
 };
 
+/** Interactive hero scenes; see src/components/heroScenes. */
+export type HeroSceneId = "distyl-logo";
+
 export type CaseStudy = {
   slug: string;
   title: string;
@@ -43,6 +46,12 @@ export type CaseStudy = {
    * over `heroImage` on the case page; `heroImage` still feeds thumbnails.
    */
   heroVideo?: { sources: string[]; fallback: string };
+  /**
+   * Interactive hero rendered behind the title. Takes priority over
+   * `heroVideo` and `heroImage` on the case page; `heroImage` still feeds
+   * thumbnails and the no-JS view.
+   */
+  heroScene?: HeroSceneId;
   /** Tailwind gradient classes for the placeholder hero when `heroImage` is missing. */
   tint?: string;
   /** Page treatment. "light" reads better under bright imagery. Defaults to dark. */

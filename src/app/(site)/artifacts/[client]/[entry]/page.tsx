@@ -32,7 +32,7 @@ export default async function ArtifactEntryPage({ params }: { params: Params }) 
   const data = await load(params);
   if (!data) notFound();
   const { client: c, entry: e, newer, older } = data;
-  const base = `/work/private/artifacts/${c.slug}`;
+  const base = `/artifacts/${c.slug}`;
 
   return (
     <ClientTheme client={c}>

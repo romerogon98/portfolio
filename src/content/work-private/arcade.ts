@@ -1,5 +1,9 @@
 import type { CaseStudy } from "@/content/work/types";
 
+// Stills are screenshots of the live arcade.dev (captured 2026-10-01), so
+// they show the site as it stands today, including later client edits.
+const A = "/work/arcade/stills";
+
 export const arcade: CaseStudy = {
   slug: "arcade",
   title: "Arcade",
@@ -9,6 +13,9 @@ export const arcade: CaseStudy = {
   role: "UX/UI Designer · Motion Direction · Custom Illustrations",
   duration: "Multi-week engagement",
   tint: "from-lime-900 to-fuchsia-950",
+  heroImage: `${A}/hero.jpg`,
+  heroImageMobile: `${A}/hero-mobile.jpg`,
+  cover: `${A}/cover.jpg`,
   liveUrl: "https://www.arcade.dev/",
   intro:
     "Arcade is the MCP runtime for production AI agents — the layer that sits between an agent and every system it needs to reach, handling authorization, reliable tools, and governance in one place so agents can pass enterprise security review. It's a deeply technical, developer-first product, trusted in production by teams like LangChain and Snyk and built by people who authored parts of the MCP tool-authorization spec. Litebox partnered with Arcade to design and build their marketing site — turning that dense infrastructure story into something a technical buyer immediately gets.",
@@ -20,6 +27,13 @@ export const arcade: CaseStudy = {
       body: [
         "Arcade's product is invisible by nature — it's the runtime between agents and the systems they act on. The UX challenge was making three abstract problems (authorization, reliability, governance) concrete and legible on a page, then showing how a single runtime solves all three. Getting the narrative and the diagrams right mattered more than decoration, because the audience is technical and skeptical.",
         "It was also a fast-moving, iteration-heavy engagement. Design, custom illustrations, and motion all had to advance in parallel while staying locked enough that development didn't churn — so a big part of the challenge was sequencing the work, locking sections as they were approved, and keeping a tight feedback loop with the client through weekly reviews.",
+      ],
+      media: [
+        {
+          src: `${A}/failed-approaches.jpg`,
+          alt: "Arcade homepage: the failed approaches to agent security",
+          wide: true,
+        },
       ],
     },
     {
@@ -37,6 +51,23 @@ export const arcade: CaseStudy = {
       ],
       closing:
         "The engagement covered the full marketing site — Homepage and Product page — plus SEO, cookie-consent setup, and a documented handoff so Arcade's team could carry it forward.",
+      media: [
+        {
+          src: `${A}/single-runtime.jpg`,
+          alt: "Arcade homepage: one runtime between any AI agent and any business system",
+          wide: true,
+        },
+        {
+          src: `${A}/everything-enforce.jpg`,
+          alt: "Arcade homepage: Enforce, Execute, Govern and Integrate capabilities",
+          wide: true,
+        },
+        {
+          src: `${A}/security-review.jpg`,
+          alt: "Arcade homepage: compliance, deployment and team illustrations",
+          wide: true,
+        },
+      ],
     },
     {
       heading: "My Role",
@@ -70,6 +101,16 @@ export const arcade: CaseStudy = {
         "Running an iteration-heavy engagement with a demanding client feedback loop and still shipping clean handoffs",
         "Separating UX deliverables from UI so each can be reviewed and approved on its own terms",
       ],
+    },
+  ],
+  gallery: [
+    { src: `${A}/product-hero.jpg`, alt: "Arcade product page hero", wide: true },
+    { src: `${A}/product-comparison.jpg`, alt: "Product page: without Arcade vs. with the Arcade runtime" },
+    { src: `${A}/product-architecture.jpg`, alt: "Product page: how the actions runtime works" },
+    {
+      src: `${A}/product-under-the-hood.jpg`,
+      alt: "Product page: authorization, tools and control-plane illustrations",
+      wide: true,
     },
   ],
 };

@@ -2,7 +2,7 @@ import type { ArtifactId } from "@/artifacts/registry";
 
 // Artifacts: custom code (components, motion, generative assets…) built for
 // SaaS clients' production sites, documented as a per-client mini-blog under
-// /work/private/artifacts.
+// /artifacts.
 
 export type ArtifactPreview = (
   | { type: "component"; id: ArtifactId }
