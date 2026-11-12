@@ -5,6 +5,18 @@ import { createHash, createHmac, timingSafeEqual } from "crypto";
 export const PRIVATE_AUTH_COOKIE = "pw_auth";
 export const PRIVATE_AUTH_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 
+// Values pasted into the Vercel dashboard can carry a trailing newline, spaces
+// or wrapping quotes; none of those should be part of the secret.
+function readEnv(name: string): string | undefined {
+  const raw = process.env[name]?.trim().replace(/^(["'])(.*)\1$/, "$2").trim();
+  return raw || undefined;
+}
+
+/** Names of the env vars the gate needs that aren't set (empty if it's ready). */
+export function missingAuthConfig(): string[] {
+  return ["PRIVATE_WORK_PASSWORD", "PRIVATE_WORK_SECRET"].filter((n) => !readEnv(n));
+}
+
 function sha256(value: string) {
   return createHash("sha256").update(value).digest();
 }
@@ -12,13 +24,13 @@ function sha256(value: string) {
 // Hashing both sides first normalizes length so timingSafeEqual never throws
 // on a length mismatch, and keeps the comparison itself constant-time.
 export function passwordMatches(candidate: string): boolean {
-  const expected = process.env.PRIVATE_WORK_PASSWORD;
+  const expected = readEnv("PRIVATE_WORK_PASSWORD");
   if (!expected) return false;
-  return timingSafeEqual(sha256(candidate), sha256(expected));
+  return timingSafeEqual(sha256(candidate.trim()), sha256(expected));
 }
 
 export function computeAuthToken(): string | null {
-  const secret = process.env.PRIVATE_WORK_SECRET;
+  const secret = readEnv("PRIVATE_WORK_SECRET");
   if (!secret) return null;
   return createHmac("sha256", secret).update("granted").digest("hex");
 }

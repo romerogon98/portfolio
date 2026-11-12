@@ -40,7 +40,11 @@ export default async function EnterPage({
           className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-center text-base text-white placeholder:text-white/30 focus:border-white/40 focus:outline-none"
         />
         {error && (
-          <p className="text-sm text-accent-500">Wrong password — try again.</p>
+          <p className="text-sm text-accent-500">
+            {error === "config"
+              ? "The site isn't fully configured yet — please try again later."
+              : "Wrong password — try again."}
+          </p>
         )}
         <OriginButton type="submit" className="w-full">
           Unlock
