@@ -1,17 +1,17 @@
-"use client";
+// Downloads the pre-rendered PDF (see scripts/cv-pdf.mjs) rather than opening
+// the print dialog: a headless-Chrome PDF keeps real spaces in its text layer,
+// which some browsers' Save as PDF drops, breaking ATS parsing.
+export const CV_PDF = "/cv/Gonzalo-Romero_CV.pdf";
 
-// Triggers the browser's print / save-as-PDF dialog. The CV page ships with
-// print styles that keep a clean light layout and drop the chrome, so
-// "Save as PDF" produces a proper downloadable résumé.
 export default function DownloadCvButton({
   className = "",
 }: {
   className?: string;
 }) {
   return (
-    <button
-      type="button"
-      onClick={() => window.print()}
+    <a
+      href={CV_PDF}
+      download="Gonzalo-Romero_CV.pdf"
       className={`cv-no-print inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-600 ${className}`}
     >
       Download CV
@@ -24,6 +24,6 @@ export default function DownloadCvButton({
           strokeLinejoin="round"
         />
       </svg>
-    </button>
+    </a>
   );
 }

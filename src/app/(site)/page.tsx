@@ -26,8 +26,8 @@ const card = (c: CaseStudy, href: string): WorkGalleryItem => ({
   tint: c.tint,
 });
 
-// The site is password-gated, so the Litebox (NDA) cases sit alongside the
-// rest — newest first, ongoing ones stay out until their case study opens.
+// The Litebox (NDA) cases sit alongside the rest — newest first, ongoing ones
+// stay out until their case study opens.
 // Griffin has no case study yet, only its artifacts log, so it links there.
 const WORK: WorkGalleryItem[] = [
   {

@@ -83,7 +83,7 @@ export default function PageTransition() {
   return (
     <div
       aria-hidden
-      className="fixed inset-0 z-[100] flex flex-row"
+      className="fixed inset-0 z-[100] flex flex-row print:hidden"
       style={{ pointerEvents: phase === "idle" ? "none" : "auto" }}
     >
       {Array.from({ length: BAND_COUNT }).map((_, i) => {
