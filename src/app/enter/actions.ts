@@ -6,6 +6,7 @@ import {
   PRIVATE_AUTH_COOKIE,
   PRIVATE_AUTH_MAX_AGE,
   computeAuthToken,
+  missingAuthConfig,
   passwordMatches,
 } from "@/lib/privateAuth";
 
@@ -18,6 +19,13 @@ function safeFrom(value: FormDataEntryValue | null) {
 export async function unlockSite(formData: FormData) {
   const password = String(formData.get("password") ?? "");
   const from = safeFrom(formData.get("from"));
+
+  // A missing env var would otherwise look exactly like a wrong password.
+  const missing = missingAuthConfig();
+  if (missing.length) {
+    console.error(`[password gate] Missing env vars: ${missing.join(", ")}`);
+    redirect(`/enter?error=config&from=${encodeURIComponent(from)}`);
+  }
 
   const token = passwordMatches(password) ? computeAuthToken() : null;
 
