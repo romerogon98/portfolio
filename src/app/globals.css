@@ -65,24 +65,31 @@ body {
   cursor: none !important;
 }
 
-/* CV print / save-as-PDF: flip the résumé to a clean light layout and drop
-   chrome (nav, cursor, the download button). Keeps accent text red. */
+/* CV print / save-as-PDF: one A4 page on the CV's cream ground, chrome
+   (nav, cursor, download button) dropped. Spacing is reset to normal so PDF
+   text extracts with real word gaps — negative tracking makes some PDF
+   engines drop the spaces, which breaks ATS parsing (Indeed etc.). */
+/* The A4 @page rule lives inline in the CV page: the CSS pipeline here
+   drops @page from this stylesheet. */
 @media print {
+  html,
+  body {
+    background: #faf8f5 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
   .cv-no-print {
     display: none !important;
   }
-  .cv-page {
-    background: #ffffff !important;
-    padding-top: 1.5rem !important;
-    color: #111111 !important;
-  }
+  .cv-page,
   .cv-page * {
-    color: #111111 !important;
-    border-color: #e5e5e5 !important;
-    background: transparent !important;
+    letter-spacing: 0 !important;
+    word-spacing: normal !important;
+    font-feature-settings: normal !important;
+    font-kerning: normal;
   }
-  .cv-page .cv-accent {
-    color: #ff4d00 !important;
+  .cv-page h2 {
+    letter-spacing: 0.06em !important;
   }
 }
 
