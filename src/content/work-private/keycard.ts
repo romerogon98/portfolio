@@ -11,15 +11,29 @@ export const keycard: CaseStudy = {
   subtitle: "Launch site and marketing web for an identity-infrastructure startup",
   year: "2025",
   client: "Keycard",
-  role: "UX/UI Designer · Web Development",
-  duration: "Launch sprint + ongoing partnership",
+  role: "UX/UI Designer · Motion & Handoff",
+  duration: "Final stretch — delivery, handoff & polish",
+  studio: "Litebox",
   tint: "from-slate-700 to-slate-950",
   heroImage: `${K}/stills/hero-laptop.jpg`,
   heroImageMobile: `${K}/stills/hero-laptop-mobile.png`,
   cover: `${K}/stills/cover.jpg`,
   liveUrl: "https://keycard.tech/",
   intro:
-    "Keycard builds identity infrastructure for the agent-native world — tools that let developers give AI agents secure, dynamic access to other tools without giving up enterprise-grade security. What started as a request for a marketing site turned into an ongoing partnership with Litebox, and I worked on the UX/UI and the build of the site: first a launch page against a hard event deadline, then the full marketing site behind it.",
+    "Keycard builds identity infrastructure for the agent-native world — tools that let developers give AI agents secure, dynamic access to other tools without giving up enterprise-grade security. What started as a request for a marketing site turned into an ongoing partnership with Litebox — brand, web, sales deck, social and merch.",
+  myPart: {
+    lead:
+      "I joined Keycard in the final stretch. The brand and the site were already in motion at Litebox — my part was helping land them: finishing the delivery, running the handoff and polishing the site with animation.",
+    body: [
+      "Keycard was moving fast, with a fixed launch date and a constant feedback loop with their CEO and in-house team. Coming in late, the job was to get up to speed quickly and raise the finish — motion, detail, consistency across breakpoints — without slowing the launch down.",
+    ],
+    owned: [
+      "Polish passes across the site, with animation that carries the brand's fluid, technical feel",
+      "Closing out the remaining delivery work alongside the Litebox team",
+      "The handoff to Keycard's in-house design and engineering teams",
+      "QA across desktop, tablet and mobile before release",
+    ],
+  },
   context:
     "Keycard needed a partner who could understand a genuinely technical product well enough to make it feel simple — and who could move fast. They had a fixed launch event where they wanted to make a strong first impression on investors and future hires, and the site had to be live for it.",
   sections: [
@@ -49,7 +63,7 @@ export const keycard: CaseStudy = {
     {
       heading: "Solution",
       body: [
-        "Litebox explored two creative directions with Keycard's in-house designer, and Keycard chose the one built around a technical, fluid and secure feeling. My part was carrying that system into the web: structuring the product story, designing the interface and building it.",
+        "Litebox explored two creative directions with Keycard's in-house designer, and Keycard chose the one built around a technical, fluid and secure feeling. That system was then carried into the web: structuring the product story, designing the interface and building it.",
         "The launch page came first — scoped for impact and shipped in time for the event, where it gave Keycard the polished first impression they needed and helped them secure funding. The rest of the marketing site followed and launched just weeks later, using the brand's isometric illustrations to explain what the product actually does.",
       ],
       list: [
@@ -85,38 +99,6 @@ export const keycard: CaseStudy = {
         "After launch the scope kept growing — more site pages, a sales deck for enterprise prospects, social assets and merch — all under the same visual system.",
     },
     {
-      heading: "My Role",
-      body: [
-        "I worked on the UX/UI and web development stage as part of the Litebox team assigned to Keycard, collaborating directly with their CEO and their in-house design and engineering teams in a constant feedback loop.",
-      ],
-      list: [
-        "Designed the UX and UI of the launch page and the full marketing site",
-        "Built the site, from the event-deadline launch page to the pages that followed",
-        "Translated the brand system — illustrations, motion, type — into web components",
-        "Designed and built the careers and values pages",
-      ],
-      media: [
-        {
-          src: `${K}/stills/values-rapid-evolution.jpg`,
-          alt: "Keycard values page: rapid evolution",
-          wide: true,
-        },
-        {
-          src: `${K}/stills/mobile-job-positions.jpg`,
-          alt: "Keycard job positions on mobile",
-        },
-        {
-          src: `${K}/stills/job-listing-card.jpg`,
-          alt: "Keycard open positions job listing card",
-        },
-        {
-          src: `${K}/stills/tablet-values.jpg`,
-          alt: "Keycard values screen on a tablet",
-          wide: true,
-        },
-      ],
-    },
-    {
       heading: "Process",
       list: [
         "Discovery — understanding Keycard's product, technical constraints and their designer's direction",
@@ -128,13 +110,31 @@ export const keycard: CaseStudy = {
     {
       heading: "Learnings",
       list: [
-        "Turning a security-and-infrastructure product into something visually approachable without dumbing it down",
-        "Designing and building under a fixed, non-negotiable deadline without cutting corners on the system underneath it",
-        "What it takes to go from a single landing page to being an ongoing web partner for a client",
+        "Joining a fast-moving project late and getting up to speed without slowing the launch",
+        "Raising the finish of a site with motion and detail under a fixed, non-negotiable deadline",
+        "Treating the handoff as part of the design: leaving something the client's own team can run with",
       ],
     },
   ],
   gallery: [
+    {
+      src: `${K}/stills/values-rapid-evolution.jpg`,
+      alt: "Keycard values page: rapid evolution",
+      wide: true,
+    },
+    {
+      src: `${K}/stills/mobile-job-positions.jpg`,
+      alt: "Keycard job positions on mobile",
+    },
+    {
+      src: `${K}/stills/job-listing-card.jpg`,
+      alt: "Keycard open positions job listing card",
+    },
+    {
+      src: `${K}/stills/tablet-values.jpg`,
+      alt: "Keycard values screen on a tablet",
+      wide: true,
+    },
     {
       src: `${K}/stills/conference.jpg`,
       alt: "Keycard presentation on a conference stage",

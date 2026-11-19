@@ -14,7 +14,6 @@ import { entuitive } from "@/content/work/entuitive";
 import { kapi } from "@/content/work/kapi";
 import { tidli } from "@/content/work/tidli";
 import { facturante } from "@/content/work/facturante";
-import { PRIVATE_PROJECTS } from "@/content/work-private";
 import { DOCUMENTED } from "@/content/work-private/cases";
 import { griffin } from "@/content/artifacts/griffin";
 
@@ -26,22 +25,31 @@ const card = (c: CaseStudy, href: string): WorkGalleryItem => ({
   tint: c.tint,
 });
 
-// The Litebox (NDA) cases sit alongside the rest — newest first, ongoing ones
-// stay out until their case study opens.
-// Griffin has no case study yet, only its artifacts log, so it links there.
+// Hand-picked order for the home. Private (Litebox, NDA) cases resolve
+// through DOCUMENTED; Griffin has no case study yet, only its artifacts log,
+// so it links there. AI Council is listed while its case is still being
+// written — its page shows the "in progress" state until it's documented.
+const privateCard = (slug: string) =>
+  card(DOCUMENTED[slug], `/work/${slug}`);
+
+const griffinCard: WorkGalleryItem = {
+  href: `/artifacts/${griffin.slug}`,
+  title: griffin.name,
+  subtitle: griffin.intro.lead,
+  img: griffin.cover,
+};
+
 const WORK: WorkGalleryItem[] = [
-  {
-    href: `/artifacts/${griffin.slug}`,
-    title: griffin.name,
-    subtitle: griffin.intro.lead,
-    img: griffin.cover,
-  },
-  ...PRIVATE_PROJECTS.filter((p) => p.status === "documented").map((p) =>
-    card(DOCUMENTED[p.slug], `/work/${p.slug}`)
-  ),
-  ...[dicaba, entuitive, kapi, tidli, facturante].map((c) =>
-    card(c, `/work/${c.slug}`)
-  ),
+  privateCard("ai-council"),
+  privateCard("vu"),
+  card(entuitive, `/work/${entuitive.slug}`),
+  griffinCard,
+  privateCard("dystil"),
+  privateCard("keycard"),
+  card(dicaba, `/work/${dicaba.slug}`),
+  card(kapi, `/work/${kapi.slug}`),
+  card(tidli, `/work/${tidli.slug}`),
+  card(facturante, `/work/${facturante.slug}`),
 ];
 
 export default function Home() {

@@ -8,6 +8,7 @@ export const entuitive: CaseStudy = {
   year: "2022",
   client: "Entuitive Engineering",
   role: "UX/UI Designer & Framer Developer",
+  studio: "Freelance",
   duration: "3 months",
   heroImage: "/work/entuitive/hero.jpg",
   tint: "from-accent-500 to-accent-950",
@@ -15,6 +16,21 @@ export const entuitive: CaseStudy = {
     "Entuitive Engineering is a civil and structural consultancy based in South Yarra, Victoria. They offer high-level engineering solutions across six business verticals, serving residential, commercial, industrial, and public sector projects.",
   context:
     "The client needed a fully-contained, one-page website that would clearly present their expertise, services, and culture — all without external navigation or page reloads.",
+  myPart: {
+    lead:
+      "Entuitive was a freelance project I was involved in end to end: I led the UX and UI from discovery to the final handoff, shaping a one-page flow dense enough to hold six business verticals and simple enough to read in one scroll.",
+    body: [
+      "I prototyped everything in Figma and worked side by side with the client's internal developer, mostly asynchronously across timezones — so the design had to be clear enough to survive without me in the room.",
+    ],
+    owned: [
+      "Led the UX and UI design from discovery to final design handoff",
+      "Defined the structure of the one-page flow to balance clarity with content depth",
+      "Created prototypes in Figma and collaborated closely with the client's internal developer",
+      "Managed asynchronous communication due to timezone gaps",
+      "Designed for performance and mobile optimization",
+      "Aligned visual direction with the brand's engineering-driven, modern tone",
+    ],
+  },
   sections: [
     {
       heading: "Challenge",
@@ -37,17 +53,6 @@ export const entuitive: CaseStudy = {
         "Custom animations and hover effects (collaboration with internal devs)",
       ],
       image: "/work/entuitive/02.jpg",
-    },
-    {
-      heading: "My Role",
-      list: [
-        "Led the UX and UI design from discovery to final design handoff",
-        "Defined the structure of the one-page flow to balance clarity with content depth",
-        "Created prototypes in Figma and collaborated closely with the client's internal developer",
-        "Managed asynchronous communication due to timezone gaps",
-        "Designed for performance and mobile optimization",
-        "Aligned visual direction with the brand's engineering-driven, modern tone",
-      ],
     },
     {
       heading: "Learnings",

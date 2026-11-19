@@ -11,6 +11,7 @@ export const arcade: CaseStudy = {
   year: "2026",
   client: "Arcade (Arcade AI, Inc.)",
   role: "UX/UI Designer · Motion Direction · Custom Illustrations",
+  studio: "Litebox",
   duration: "Multi-week engagement",
   tint: "from-lime-900 to-fuchsia-950",
   heroImage: `${A}/hero.jpg`,

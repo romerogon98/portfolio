@@ -7,6 +7,7 @@ export const resolve: CaseStudy = {
   year: "2026",
   client: "Resolve AI",
   role: "Growth · UX/UI Designer",
+  studio: "Litebox",
   duration: "Ongoing website & growth improvements",
   tint: "from-emerald-900 to-slate-950",
   liveUrl: "https://resolve.ai/",

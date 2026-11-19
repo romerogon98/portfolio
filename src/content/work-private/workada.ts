@@ -7,6 +7,7 @@ export const workada: CaseStudy = {
   year: "2026",
   client: "Workada (Longitude Labs)",
   role: "UX/UI Designer · Web Development",
+  studio: "Litebox",
   duration: "V1 shipped in ~3 days",
   tint: "from-sky-700 to-indigo-950",
   liveUrl: "https://workada.com/",

@@ -27,6 +27,24 @@ export type CaseSection = {
 /** Interactive hero scenes; see src/components/heroScenes. */
 export type HeroSceneId = "distyl-logo";
 
+/**
+ * My own part in the project, set apart from the team-level story. Rendered
+ * right after the intro so the case reads "what the studio did → what I did".
+ */
+export type MyPart = {
+  /**
+   * First-person lead that narrows the focus from the whole project to my
+   * contribution, e.g. "This case isn't about the whole site — it's about…".
+   */
+  lead: string;
+  /** Optional follow-up paragraphs (how I worked, tools, decisions). */
+  body?: string[];
+  /** Concrete pieces I designed, built or owned — rendered as a numbered list. */
+  owned: string[];
+  /** Shots of the pieces I owned, rendered under the list. */
+  media?: CaseMedia[];
+};
+
 export type CaseStudy = {
   slug: string;
   title: string;
@@ -35,6 +53,13 @@ export type CaseStudy = {
   client: string;
   role: string;
   duration: string;
+  /**
+   * Where the work was made — the studio for agency work ("Litebox", "Avans"),
+   * or "Freelance". Shown in the hero meta next to the client.
+   */
+  studio?: string;
+  /** My contribution, shown as its own block after the intro. */
+  myPart?: MyPart;
   /** Local hero image. When absent, the case renders a gradient hero using `tint`. */
   heroImage?: string;
   /** Portrait crop of the hero for phones; falls back to `heroImage`. */

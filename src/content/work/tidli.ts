@@ -7,10 +7,22 @@ export const tidli: CaseStudy = {
   year: "2024",
   client: "Tidli",
   role: "UX/UI Designer",
+  studio: "Freelance",
   duration: "6 months",
   heroImage: "/work/tidli/hero.jpg",
   intro:
     "Tidli is a task management application aimed at helping users organize their daily activities efficiently. The goal was to create an intuitive and visually appealing interface that enhances user productivity and engagement.",
+  myPart: {
+    lead:
+      "Tidli was a freelance project where I took part in every stage — research, flows, UI and client presentations — designing the app's core screens, from task creation and dashboards to onboarding.",
+    owned: [
+      "Designed core UI flows including task creation, calendar, notifications, and settings",
+      "Maintained consistency across design system components",
+      "Participated in client-facing calls and presentations to showcase progress",
+      "Collaborated with the product team to align user needs with business goals",
+      "Ensured developer handoff was clean and design files were well-documented",
+    ],
+  },
   sections: [
     {
       heading: "Challenge",
@@ -27,19 +39,6 @@ export const tidli: CaseStudy = {
         "Intuitive task organization — create, categorize, and prioritize tasks seamlessly",
         "Collaborative features — integrated sharing and team collaboration tools",
         "Customization — a workspace users can personalize to suit their preferences",
-      ],
-    },
-    {
-      heading: "My Role",
-      body: [
-        "I was responsible for designing and refining multiple screens across the app, including task flows, dashboards, and user onboarding. I also led, along with my team, interactions with the client — participating in key presentations and delivering prototypes for validation.",
-      ],
-      list: [
-        "Designed core UI flows including task creation, calendar, notifications, and settings",
-        "Maintained consistency across design system components",
-        "Participated in client-facing calls and presentations to showcase progress",
-        "Collaborated with the product team to align user needs with business goals",
-        "Ensured developer handoff was clean and design files were well-documented",
       ],
     },
     {
