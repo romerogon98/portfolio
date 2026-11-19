@@ -7,12 +7,22 @@ export const facturante: CaseStudy = {
   year: "2023",
   client: "Facturante",
   role: "Webflow Developer · Project Manager",
+  studio: "Freelance",
   duration: "3–4 weeks",
   heroImage: "/work/facturante/hero.jpg",
   intro:
     "Facturante is an Argentinian digital invoicing platform. The client approached us with the need to rebuild their website and integrate a new automated billing system that would suggest the most suitable plan based on user input.",
   context:
     "The design had already been delivered and approved, so my focus was on leading the implementation process and solving technical challenges related to automation.",
+  myPart: {
+    lead:
+      "Facturante was a freelance project where I covered the whole delivery. The design was already approved, so my part was making it real: I led the implementation as project manager and Webflow developer, and solved the automation behind the plan recommender.",
+    owned: [
+      "Acted as Project Manager, managing my dev team and keeping client communication smooth",
+      "Worked as Webflow Developer, building and implementing all CMS and structural components",
+      "Participated in decision-making on third-party tools, testing flows, and final QA",
+    ],
+  },
   sections: [
     {
       heading: "Challenge",
@@ -26,14 +36,6 @@ export const facturante: CaseStudy = {
       body: [
         "We built the site in Webflow using a fully dynamic CMS structure for easy plan updates. For the billing automation logic, we used JavaScript integrated into Webflow, making the plan selector truly dynamic and tailored.",
         "All of this was coordinated through validation calls with the client and testing rounds to ensure correct performance.",
-      ],
-    },
-    {
-      heading: "My Role",
-      list: [
-        "Acted as Project Manager, managing my dev team and keeping client communication smooth",
-        "Worked as Webflow Developer, building and implementing all CMS and structural components",
-        "Participated in decision-making on third-party tools, testing flows, and final QA",
       ],
     },
     {

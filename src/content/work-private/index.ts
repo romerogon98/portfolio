@@ -12,6 +12,7 @@ export type PrivateProjectEntry = {
 // listed with a lock, their case study kept closed until the work wraps up.
 // Kept in alphabetical order by title.
 export const PRIVATE_PROJECTS: PrivateProjectEntry[] = [
+  { slug: "ai-council", title: "AI Council", status: "soon" },
   { slug: "arcade", title: "Arcade", status: "soon" },
   { slug: "causely", title: "Causely", status: "soon" },
   { slug: "dystil", title: "Distyl", status: "documented" },

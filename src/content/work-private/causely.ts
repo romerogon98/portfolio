@@ -7,6 +7,7 @@ export const causely: CaseStudy = {
   year: "2026",
   client: "Causely",
   role: "UX/UI Designer · Marketing Website",
+  studio: "Litebox",
   duration: "Brand workshop → MVP launch → post-MVP pages",
   tint: "from-indigo-950 to-slate-950",
   liveUrl: "https://www.causely.ai/",

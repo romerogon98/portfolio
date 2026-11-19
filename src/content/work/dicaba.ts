@@ -7,12 +7,26 @@ export const dicaba: CaseStudy = {
   year: "2023",
   client: "Dicaba",
   role: "Project Manager · Designer · Framer Developer",
+  studio: "Freelance",
   duration: "3–4 weeks",
   heroImage: "/work/dicaba/hero-interior.jpg",
   intro:
     "Dicaba is a real estate development company with over 35 years of experience in architecture and construction. Their goal was to translate their strong brand, values and trust into a modern, interactive website that emotionally connects with potential clients.",
   context:
     "They reached out to me after seeing one of my previous real estate projects. The challenge was to deliver a premium user experience — one that felt dynamic, elegant and highly personalized — all within a tight timeline.",
+  myPart: {
+    lead:
+      "This one was mine end to end. I ran the project, designed the experience and built the whole site in Framer — so every decision, from the first meeting to the CMS the client uses today, went through me.",
+    owned: [
+      "Led communication with the client through weekly meetings",
+      "Defined project structure and delivery timelines",
+      "Designed the website experience in Figma and Framer",
+      "Developed the full website in Framer, including responsive behavior, animations, and CMS setup",
+      "Structured a CMS system to manage properties dynamically",
+      "Guided the client through testing, validation, and content upload",
+      "Acted as a strategic partner, aligning design with business goals and brand voice",
+    ],
+  },
   sections: [
     {
       heading: "Challenge",
@@ -35,19 +49,6 @@ export const dicaba: CaseStudy = {
       closing:
         "The site became a digital extension of the brand — timeless, clean, and with high perceived value.",
       image: "/work/dicaba/bedroom.webp",
-    },
-    {
-      heading: "My Role",
-      body: ["I worked as the Project Manager, UX/UI Designer, and Developer for this project."],
-      list: [
-        "Led communication with the client through weekly meetings",
-        "Defined project structure and delivery timelines",
-        "Designed the website experience in Figma and Framer",
-        "Developed the full website in Framer, including responsive behavior, animations, and CMS setup",
-        "Structured a CMS system to manage properties dynamically",
-        "Guided the client through testing, validation, and content upload",
-        "Acted as a strategic partner, aligning design with business goals and brand voice",
-      ],
     },
     {
       heading: "Process",

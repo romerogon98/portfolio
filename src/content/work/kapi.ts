@@ -7,12 +7,24 @@ export const kapi: CaseStudy = {
   year: "2024",
   client: "Kapi",
   role: "UX/UI Designer · Product Strategist",
+  studio: "Freelance",
   duration: "2 months",
   heroImage: "/work/kapi/hero.jpg",
   intro:
     "Kapi is a mobile app focused on organizing and joining football matches and tournaments. The client approached us to redesign the entire look and feel of the app, as the current version had diverged significantly from the original product vision.",
   context:
     "In addition to design improvements, we were asked to explore new business opportunities and features that could enhance monetization and user retention.",
+  myPart: {
+    lead:
+      "Kapi was a freelance project, and I was involved in every part of it: I audited the app with the client, redesigned its core flows and UI, and helped turn what we found into new product opportunities.",
+    owned: [
+      "Conducted a full UX audit with the client to define pain points",
+      "Designed new user flows and high-fidelity UI for key sections",
+      "Participated in five live workshops to align with developers and business stakeholders",
+      "Helped identify new product opportunities based on existing patterns and user potential",
+      "Delivered a clear, scalable design file for future implementation",
+    ],
+  },
   sections: [
     {
       heading: "Challenge",
@@ -39,16 +51,6 @@ export const kapi: CaseStudy = {
         "Added ideas for personalization and future monetization",
       ],
       image: "/work/kapi/02.jpg",
-    },
-    {
-      heading: "My Role",
-      list: [
-        "Conducted a full UX audit with the client to define pain points",
-        "Designed new user flows and high-fidelity UI for key sections",
-        "Participated in five live workshops to align with developers and business stakeholders",
-        "Helped identify new product opportunities based on existing patterns and user potential",
-        "Delivered a clear, scalable design file for future implementation",
-      ],
     },
     {
       heading: "Process",

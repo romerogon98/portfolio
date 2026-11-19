@@ -178,6 +178,7 @@ export default function CaseStudy({
     body: light ? "text-neutral-700" : "text-white/80",
     bullet: light ? "bg-neutral-400" : "bg-white/40",
     frame: light ? "border-neutral-200" : "border-white/10",
+    myPartBg: light ? "bg-neutral-50" : "bg-white/[0.03]",
     bar: light
       ? "border-neutral-200 bg-white/70 text-neutral-900"
       : "border-white/10 bg-black/50 text-white",
@@ -251,25 +252,29 @@ export default function CaseStudy({
           </OriginButton>
         )}
 
+        {/* Role leads — the case is about my part first, the project second. */}
         <dl
-          className={`cs-hero-meta mt-12 grid grid-cols-2 gap-6 border-t pt-6 text-sm sm:grid-cols-4 ${t.rule}`}
+          className={`cs-hero-meta mt-12 grid grid-cols-2 gap-6 border-t pt-6 text-sm ${
+            data.studio ? "sm:grid-cols-5" : "sm:grid-cols-4"
+          } ${t.rule}`}
         >
-          <div>
-            <dt className={`text-[11px] ${monoLabel}`}>Year</dt>
-            <dd className="mt-1">{data.year}</dd>
-          </div>
-          <div>
-            <dt className={`text-[11px] ${monoLabel}`}>Client</dt>
-            <dd className="mt-1">{data.client}</dd>
-          </div>
-          <div>
-            <dt className={`text-[11px] ${monoLabel}`}>Role</dt>
-            <dd className="mt-1">{data.role}</dd>
-          </div>
-          <div>
-            <dt className={`text-[11px] ${monoLabel}`}>Duration</dt>
-            <dd className="mt-1">{data.duration}</dd>
-          </div>
+          {[
+            { label: "My role", value: data.role, lead: true },
+            { label: "Client", value: data.client },
+            ...(data.studio ? [{ label: "Studio", value: data.studio }] : []),
+            { label: "Year", value: data.year },
+            { label: "Duration", value: data.duration },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className={item.lead ? "max-sm:col-span-2" : undefined}
+            >
+              <dt className={`text-[11px] ${monoLabel}`}>{item.label}</dt>
+              <dd className={`mt-1 ${item.lead ? "font-medium" : ""}`}>
+                {item.value}
+              </dd>
+            </div>
+          ))}
         </dl>
       </section>
 
@@ -286,6 +291,62 @@ export default function CaseStudy({
           </p>
         )}
       </section>
+
+      {/* My part — the hinge of the case: from what the studio did to what I did. */}
+      {data.myPart && (
+        <section
+          aria-labelledby="case-my-part"
+          className={`border-y ${t.rule} ${t.myPartBg}`}
+        >
+          <div className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
+            <h2
+              id="case-my-part"
+              className={`cs-reveal text-xs ${monoLabel}`}
+            >
+              (My part)
+            </h2>
+            <p className="cs-reveal mt-6 text-[clamp(1.75rem,3.6vw,2.75rem)] font-normal leading-[1.12] tracking-[-0.03em]">
+              {data.myPart.lead}
+            </p>
+            {data.myPart.body?.map((paragraph, i) => (
+              <p
+                key={i}
+                className={`cs-reveal mt-6 max-w-3xl text-lg leading-relaxed ${t.body}`}
+              >
+                {paragraph}
+              </p>
+            ))}
+
+            <h3 className={`cs-reveal mt-16 text-[11px] ${monoLabel}`}>
+              What I owned
+            </h3>
+            <ol className={`cs-reveal mt-4 border-t ${t.rule}`}>
+              {data.myPart.owned.map((item, i) => (
+                <li
+                  key={i}
+                  className={`flex gap-6 border-b py-5 text-lg leading-snug sm:gap-10 ${t.rule}`}
+                >
+                  <span
+                    aria-hidden
+                    className={`w-6 shrink-0 pt-1 font-mono text-xs tabular-nums ${t.label}`}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className={t.intro}>{item}</span>
+                </li>
+              ))}
+            </ol>
+
+            {data.myPart.media && data.myPart.media.length > 0 && (
+              <div className="mt-14">
+                <CaseMediaGrid items={data.myPart.media} title={data.title} />
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {data.myPart && <div aria-hidden className="h-24 max-sm:h-0" />}
 
       {data.sections.map((section, idx) => {
         const open = openSections.has(idx);

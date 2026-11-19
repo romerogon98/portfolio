@@ -7,6 +7,7 @@ export const superwall: CaseStudy = {
   year: "2026",
   client: "Superwall (Nest 22, Inc.)",
   role: "UX/UI Designer · Marketing Website",
+  studio: "Litebox",
   duration: "Multi-month partnership (page-by-page redesign)",
   tint: "from-indigo-900 to-slate-950",
   liveUrl: "https://superwall.com/",

@@ -6,8 +6,9 @@ export const vu: CaseStudy = {
   subtitle: "A trilingual demand engine for a LATAM digital identity platform",
   year: "2026",
   client: "VU (VU Security)",
-  role: "UX/UI Designer · Full Website",
+  role: "UX/UI Designer · Branding to Launch",
   duration: "Launch March 2026 · ongoing monthly retainer",
+  studio: "Litebox",
   tint: "from-orange-700 to-neutral-950",
   cover: "/work/vu/stills/cover.webp",
   heroVideo: {
@@ -16,7 +17,34 @@ export const vu: CaseStudy = {
   },
   liveUrl: "https://www.vusecurity.com/",
   intro:
-    "VU is a Latin American digital identity company — identity verification, biometric authentication and real-time fraud detection, consolidated in a single platform (VU ONE) and sold to banks, gaming operators, retailers, healthcare providers and governments across Argentina, Brazil, Chile, Colombia and Mexico. They arrived at Litebox with a mature product and an enterprise sales motion that worked, but a marketing site that generated almost none of their pipeline. We designed and built a new site from scratch, and the project has since become an ongoing design, development, content and growth retainer.",
+    "VU is a Latin American digital identity company — identity verification, biometric authentication and real-time fraud detection, consolidated in a single platform (VU ONE) and sold to banks, gaming operators, retailers, healthcare providers and governments across Argentina, Brazil, Chile, Colombia and Mexico. They arrived at Litebox with a mature product and an enterprise sales motion that worked, but a marketing site that generated almost none of their pipeline. Litebox designed and built a new site from scratch, and the project has since become an ongoing design, development, content and growth retainer.",
+  myPart: {
+    lead:
+      "I was on VU from the very beginning — from the first branding explorations and the first screens to the launched product. I owned the UX/UI of the site end to end, from the information architecture to every page and template the content engine and event landings run on.",
+    body: [
+      "Being there from the start meant the site and the brand grew together: the same visual language that shows up on a stand, a billboard or a printed report is the one the pages are built on. The interesting design problem wasn't a single page, it was a system — layouts that hold up in three languages, templates the client's team can publish into without a designer, and CTAs and forms specified with tracking in mind from day one.",
+    ],
+    owned: [
+      "Early branding work — the first explorations that set the visual language for the site",
+      "The site's information architecture and UI across home, solutions and capability pages",
+      "Layouts that hold up in Spanish, English and Brazilian Portuguese",
+      "The page templates behind the regulation, glossary, fraud-type and comparison content",
+      "The event landing template, starting with FEBRABAN TECH 2026",
+      "CTAs and forms specified for tracking, and a consistent system as the retainer expanded it",
+    ],
+    media: [
+      {
+        src: "/work/vu/stills/site-laptop.webp",
+        alt: "VU site on a laptop: “Frictionless authentication to protect every identity”",
+        wide: true,
+      },
+      {
+        src: "/work/vu/stills/site-screens.webp",
+        alt: "VU site pages across phone and tablet: onboarding, verification, gaming and authentication",
+        wide: true,
+      },
+    ],
+  },
   context:
     "In VU's market, the conversation starts with regulation: a compliance officer facing a new AML rule, a CISO after a fraud incident, a product lead replacing a vendor. Each arrives with a specific question about a specific country. The old site answered none of them by name, search traffic was almost entirely branded, and the leads that did come in arrived in spikes nobody could trace back to a source.",
   sections: [
@@ -103,21 +131,9 @@ export const vu: CaseStudy = {
       ],
     },
     {
-      heading: "My Role",
-      body: [
-        "I designed the full UX/UI of the site as part of the Litebox team assigned to VU — from the information architecture to every page and template, including the ones the content and event work runs on.",
-      ],
-      list: [
-        "Designed the site's information architecture and UI across home, solutions and capability pages",
-        "Designed layouts that hold up in Spanish, English and Brazilian Portuguese",
-        "Designed the page templates behind the regulation, glossary, fraud-type and comparison content",
-        "Designed the event landing template, starting with FEBRABAN TECH 2026",
-        "Specified CTAs and forms with tracking in mind, and kept the system consistent as the retainer expanded it",
-      ],
-    },
-    {
       heading: "Process",
       list: [
+        "Branding — first explorations and key visuals, alongside the site's earliest screens",
         "Discovery — VU's product, the buyers (compliance, security, product) and the five markets they sell into",
         "Architecture & UI — a trilingual site designed as a modular system in Figma",
         "Build & launch — development, Dynamics routing and instrumentation, live on 18 March 2026",
@@ -137,6 +153,8 @@ export const vu: CaseStudy = {
     },
   ],
   gallery: [
+    { src: "/work/vu/stills/logo.webp", alt: "VU logo on dark with orange pixel blocks" },
+    { src: "/work/vu/stills/secure-frictionless.webp", alt: "“Secure, frictionless experiences” VU key visual" },
     {
       src: "/work/vu/stills/print-collateral.webp",
       alt: "VU print collateral: brochures, fact sheet and posters",

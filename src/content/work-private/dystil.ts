@@ -11,8 +11,9 @@ export const dystil: CaseStudy = {
   subtitle: "Rebrand and enterprise marketing site, designed in Figma and built with Claude Code",
   year: "2026",
   client: "Distyl AI",
-  role: "UX/UI Designer · Web Development",
-  duration: "Ongoing partnership (MVW → Careers, News & improvements)",
+  role: "UX/UI Designer · Motion & Handoff",
+  duration: "Final stretch — delivery, handoff & polish",
+  studio: "Litebox",
   tint: "from-stone-700 to-neutral-950",
   theme: "light",
   heroScene: "distyl-logo",
@@ -22,6 +23,19 @@ export const dystil: CaseStudy = {
   liveUrl: "https://www.distyl.ai/",
   intro:
     "Distyl AI architects the AI-native enterprise — it forward-deploys teams of engineers and researchers, plus a suite of purpose-built products (Distillery, Weave, Context Mesh, Context Views, Journey, Canary), to design and operationalize AI transformations for Fortune 500 companies. Founded by ex-Palantir leaders and recently valued at $1.8B, their AI systems reach 150M+ end users across telecom, healthcare, insurance and more, and they partner with OpenAI, Anthropic, Google and Microsoft. Litebox partnered with Distyl on their rebrand and a new marketing site built to match the seriousness and scale of that enterprise story.",
+  myPart: {
+    lead:
+      "I joined Distyl in the final stretch. The rebrand and the site were already well underway at Litebox — my part was helping land it: finishing the delivery, running the handoff and polishing the site with animation.",
+    body: [
+      "Coming in late meant getting up to speed fast on a large system that other people had built, and then raising the finish without breaking it. Most of my time went into the details that make a site feel complete — how sections enter, how things move on scroll, how it holds up across breakpoints — and into leaving the project in a state the client could own.",
+    ],
+    owned: [
+      "Polish passes across the site's sections, with animation and scroll-linked motion",
+      "Closing out the remaining delivery work alongside the Litebox team",
+      "The handoff to Distyl — making the site and its system ready for the client to take over",
+      "QA across desktop, tablet and mobile before release",
+    ],
+  },
   context:
     "Distyl needed a brand and website that signaled frontier, enterprise-grade credibility to Fortune 500 buyers — not a startup landing, but a polished, technically ambitious site with a deep product architecture, case studies, research and careers. The work ran in phases against a live company, with leadership deeply involved in feedback and a bar set high on both design quality and technical polish.",
   sections: [
@@ -39,7 +53,7 @@ export const dystil: CaseStudy = {
     {
       heading: "Solution",
       body: [
-        "We started from the brand — refreshed guidelines (including image-generation prompts and asset galleries) and key visuals — then designed the site around a clear, scalable structure: Home, a Technology section with a subpage per product, Case Studies, Research, About, News and Careers. Custom illustrations carried a lot of the personality (home stats, About locations, Research entries), and I directed those with our illustrator to keep a consistent style across sections.",
+        "We started from the brand — refreshed guidelines (including image-generation prompts and asset galleries) and key visuals — then designed the site around a clear, scalable structure: Home, a Technology section with a subpage per product, Case Studies, Research, About, News and Careers. Custom illustrations carried a lot of the personality (home stats, About locations, Research entries), directed with an illustrator to keep a consistent style across sections.",
         "The workflow was Figma-first, then Claude Code: we set the base and the design system in Figma, then did the entire buildup with Claude Code rather than a traditional hand-coded handoff. On top of the system, the build layered in the technical craft the brand demanded. The hero is a custom Three.js animation of the Distyl logo that reacts to the cursor (with a graceful touch fallback), and we built a hero editor alongside it to shape and tune that animation live as we went, instead of guessing in code. Sections across the site carry custom scroll-linked animations, plus site-wide page transitions, animated metrics, and a Sanity CMS so Distyl could manage content themselves. We shipped in phases on Next.js + Vercel — MVW first, then Careers and News — with tight QA across breakpoints and a steady cadence of client review.",
       ],
       list: [
@@ -71,19 +85,6 @@ export const dystil: CaseStudy = {
       ],
     },
     {
-      heading: "My Role",
-      body: [
-        "I worked as UX/UI designer and builder on the Litebox team assigned to Distyl — setting the base and design system in Figma, then building the site with Claude Code, while iterating on the logo, directing the custom illustrations, and designing sections across the site as it scaled through its phases.",
-      ],
-      list: [
-        "Set the base and design system in Figma, then built the site with Claude Code (not a traditional handoff)",
-        "Contributed to the rebrand and the site's UI within the Distyl design system",
-        "Iterated on the logo and its placements (containers, navbar balance, compliance logos like SOC 2 / HIPAA)",
-        "Directed custom illustrations with the illustrator (Home stats, About locations, Research entries)",
-        "Designed sections across Home, Technology, Case Studies, Careers and more, and iterated with the client and QA across breakpoints",
-      ],
-    },
-    {
       heading: "Process",
       list: [
         "Branding — refreshed guidelines, key visuals, image-generation prompts and asset galleries",
@@ -96,12 +97,9 @@ export const dystil: CaseStudy = {
     {
       heading: "Learnings",
       list: [
-        "Designing a brand and site that has to read as frontier and enterprise-credible to Fortune 500 buyers",
-        "Setting a solid design system in Figma first, then building the whole site with Claude Code — design and build in one loop",
-        "Building a scalable IA and design system that holds up across many pages and product subpages",
-        "Directing custom illustration work to a consistent style across an entire site",
-        "Pairing design with technically ambitious execution — 3D, motion, transitions — without losing polish, on a phased, high-touch engagement",
-        "Building our own tooling (the hero editor) to art-direct a 3D animation with the client rather than in code",
+        "Joining a project in its final stretch — getting up to speed fast on a system other people built",
+        "Raising the finish of a site with motion and detail without breaking what already works",
+        "Treating the handoff as part of the design: leaving something the client can actually own",
       ],
     },
   ],

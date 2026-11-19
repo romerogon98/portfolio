@@ -1,5 +1,6 @@
 import type { CaseStudy } from "@/content/work/types";
 import { keycard } from "./keycard";
+import { aiCouncil } from "./ai-council";
 import { arcade } from "./arcade";
 import { superwall } from "./superwall";
 import { vu } from "./vu";
@@ -12,6 +13,7 @@ import { workada } from "./workada";
 // Add an entry here as each project gets a real, documented case study.
 export const DOCUMENTED: Record<string, CaseStudy> = {
   keycard,
+  "ai-council": aiCouncil,
   arcade,
   superwall,
   vu,

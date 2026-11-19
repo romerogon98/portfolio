@@ -7,6 +7,7 @@ export const coderabbit: CaseStudy = {
   year: "2025 — 2026",
   client: "CodeRabbit",
   role: "UX/UI Lead",
+  studio: "Litebox",
   duration: "Brand + website build, then ongoing pages",
   tint: "from-orange-900 to-zinc-950",
   liveUrl: "https://www.coderabbit.ai/",

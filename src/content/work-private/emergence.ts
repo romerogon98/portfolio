@@ -7,6 +7,7 @@ export const emergence: CaseStudy = {
   year: "2026",
   client: "Emergence AI",
   role: "UI/UX Lead — Product",
+  studio: "Litebox",
   duration: "Ongoing partnership (design system + website + product UI)",
   tint: "from-orange-900 to-neutral-950",
   liveUrl: "https://www.emergence.ai/",
