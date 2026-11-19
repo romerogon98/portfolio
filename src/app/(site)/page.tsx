@@ -27,8 +27,7 @@ const card = (c: CaseStudy, href: string): WorkGalleryItem => ({
 
 // Hand-picked order for the home. Private (Litebox, NDA) cases resolve
 // through DOCUMENTED; Griffin has no case study yet, only its artifacts log,
-// so it links there. AI Council is listed while its case is still being
-// written — its page shows the "in progress" state until it's documented.
+// so it links there.
 const privateCard = (slug: string) =>
   card(DOCUMENTED[slug], `/work/${slug}`);
 
